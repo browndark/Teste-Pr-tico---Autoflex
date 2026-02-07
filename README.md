@@ -58,20 +58,20 @@ quest-hands/
 ## Requirements Implemented
 
 ### Requisitos Funcionais
-- **RF001:** CRUD Produtos ✓ (código, nome, valor)
-- **RF002:** CRUD Matérias-primas ✓ (código, nome, quantidade)
-- **RF003:** CRUD Associações ✓ (produto ↔ matéria-prima com quantidade)
-- **RF004:** Sugestão de produção ✓ (algoritmo greedy por valor)
-- **RF005-RF008:** Interfaces gráficas ✓ (todas as telas implementadas)
+- **RF001:** CRUD Produtos [COMPLETED] (código, nome, valor)
+- **RF002:** CRUD Matérias-primas [COMPLETED] (código, nome, quantidade)
+- **RF003:** CRUD Associações [COMPLETED] (produto ↔ matéria-prima com quantidade)
+- **RF004:** Sugestão de produção [COMPLETED] (algoritmo greedy por valor)
+- **RF005-RF008:** Interfaces gráficas [COMPLETED] (todas as telas implementadas)
 
 ### Requisitos Não Funcionais
-- **RNF001:** Web (Chrome, Firefox, Edge) ✓
-- **RNF002:** API separada ✓ (Backend: 8082, Frontend: 3001)
-- **RNF003:** Responsividade ✓ (breakpoints 768px, 480px)
-- **RNF004:** PostgreSQL ✓
-- **RNF005:** Quarkus ✓
-- **RNF006:** React + Redux ✓
-- **RNF007:** Inglês (código, DB, colons) ✓
+- **RNF001:** Web (Chrome, Firefox, Edge) [COMPLETED]
+- **RNF002:** API separada [COMPLETED] (Backend: 8082, Frontend: 3001)
+- **RNF003:** Responsividade [COMPLETED] (breakpoints 768px, 480px)
+- **RNF004:** PostgreSQL [COMPLETED]
+- **RNF005:** Quarkus [COMPLETED]
+- **RNF006:** React + Redux [COMPLETED]
+- **RNF007:** Inglês (código, DB, colons) [COMPLETED]
 
 ###  Desejáveis Implementados
 -  Testes unitários backend (JUnit, RestAssured)
@@ -225,12 +225,6 @@ Implementa abordagem greedy:
 - Backend: ~50MB JAR (Quarkus)
 - DB: Indexes em columns críticas
 - API response: <100ms (5 queries max)
-
----
-
-##  Licença
-
-MIT
 
 ---
 

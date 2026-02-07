@@ -115,7 +115,7 @@ App.js (Main Container)
 
 ---
 
-## 🔐 Validation Layers
+## Validation Layers
 
 ### Frontend
 ```
@@ -235,7 +235,7 @@ Production Suggestion
 
 ---
 
-## 📊 Database Constraints
+## Database Constraints
 
 ```sql
 -- product table
@@ -253,7 +253,7 @@ ALTER TABLE product_raw_material ADD CHECK (required_quantity > 0);
 
 ---
 
-## 🚀 Deployment Topology
+## Deployment Topology
 
 ### Development
 - Backend: `localhost:8082` (Quarkus dev mode)
