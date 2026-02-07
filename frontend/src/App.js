@@ -46,41 +46,42 @@ function App() {
         background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%)',
         border: '1px solid rgba(139, 92, 246, 0.2)',
         borderRadius: '12px',
-        padding: '1.25rem 1.5rem',
-        marginBottom: '2rem',
+        padding: '0.875rem 1.25rem',
+        marginBottom: '1.5rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        gap: '2rem',
+        gap: '1.5rem',
         backdropFilter: 'blur(10px)',
-        minHeight: '80px'
+        minHeight: '60px'
       }}>
         <div style={{ flex: '1 1 auto', minWidth: '0' }}>
           <h1 className="main-title devui-title" style={{ 
-            marginBottom: '0.25rem',
-            fontSize: '1.75rem',
-            lineHeight: '1.3'
+            marginBottom: '0.125rem',
+            fontSize: '1.2rem',
+            lineHeight: '1.3',
+            fontWeight: 700
           }}>Gerenciamento de Inventário</h1>
-          <p style={{ color: '#9ca3af', fontSize: '0.9rem', margin: 0 }}>Sistema de Controle de Produtos e Matérias-primas</p>
+          <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: 0, lineHeight: '1.2' }}>Sistema de Controle de Produtos e Matérias-primas</p>
         </div>
         
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '1.5rem',
+          gap: '1rem',
           flexShrink: 0,
           whiteSpace: 'nowrap'
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '1rem',
-            paddingRight: '1.5rem',
+            gap: '0.75rem',
+            paddingRight: '1rem',
             borderRight: '1px solid rgba(139, 92, 246, 0.2)'
           }}>
             <div style={{
-              width: '44px',
-              height: '44px',
+              width: '40px',
+              height: '40px',
               borderRadius: '50%',
               background: 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)',
               display: 'flex',
@@ -88,16 +89,16 @@ function App() {
               justifyContent: 'center',
               color: 'white',
               fontWeight: 700,
-              fontSize: '1rem',
+              fontSize: '0.9rem',
               boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)',
               flexShrink: 0
             }}>
               {getInitials(user.name)}
             </div>
             <div style={{ minWidth: '0' }}>
-              <p style={{ color: '#a78bfa', fontSize: '0.8rem', margin: '0 0 0.2rem 0', fontWeight: 500 }}>LOGADO</p>
-              <p style={{ color: '#f3f4f6', fontSize: '1rem', fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>{user.name}</p>
-              <p style={{ color: '#9ca3af', fontSize: '0.75rem', margin: '0.2rem 0 0 0', overflow: 'hidden', textOverflow: 'ellipsis' }}>{user.email}</p>
+              <p style={{ color: '#a78bfa', fontSize: '0.75rem', margin: '0', fontWeight: 500 }}>LOGADO</p>
+              <p style={{ color: '#f3f4f6', fontSize: '0.9rem', fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.name}</p>
+              <p style={{ color: '#9ca3af', fontSize: '0.7rem', margin: '0.1rem 0 0 0', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.email}</p>
             </div>
           </div>
 
@@ -107,10 +108,10 @@ function App() {
               background: '#ef4444',
               color: 'white',
               border: 'none',
-              padding: '0.625rem 1.25rem',
+              padding: '0.5rem 1rem',
               borderRadius: '6px',
               cursor: 'pointer',
-              fontSize: '0.9rem',
+              fontSize: '0.85rem',
               fontWeight: 600,
               transition: 'all 0.3s ease',
               boxShadow: '0 2px 8px rgba(239, 68, 68, 0.2)',
