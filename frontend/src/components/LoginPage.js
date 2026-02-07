@@ -183,13 +183,23 @@ function LoginPage() {
           </div>
 
           <div>
-            <label style={{
-              color: '#d1d5db',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              display: 'block',
-              marginBottom: '0.5rem'
-            }}>Senha</label>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+              <label style={{
+                color: '#d1d5db',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                display: 'block'
+              }}>Senha</label>
+              <a href="#" onClick={(e) => { e.preventDefault(); alert('Opção de recuperação de senha será implementada'); }} style={{
+                color: '#a78bfa',
+                fontSize: '0.8rem',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }} onMouseOver={(e) => e.target.style.opacity = '0.7'} onMouseOut={(e) => e.target.style.opacity = '1'}>
+                Perdeu sua senha?
+              </a>
+            </div>
             <div style={{ position: 'relative' }}>
               <input
                 name="password"
@@ -249,13 +259,45 @@ function LoginPage() {
               boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)',
               fontFamily: 'inherit',
               transition: 'all 0.3s ease',
-              marginTop: '0.5rem'
+              marginTop: '0.5rem',
+              width: '100%'
             }}
             onMouseOver={(e) => e.target.style.boxShadow = '0 6px 16px rgba(139, 92, 246, 0.4)'}
             onMouseOut={(e) => e.target.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.3)'}
           >
             Entrar no Sistema
           </button>
+
+          <div style={{
+            textAlign: 'center',
+            paddingTop: '1rem',
+            borderTop: '1px solid rgba(139, 92, 246, 0.2)',
+            marginTop: '1rem'
+          }}>
+            <p style={{
+              color: '#9ca3af',
+              fontSize: '0.9rem',
+              margin: '0 0 0.5rem 0'
+            }}>
+              Não tem uma conta?
+            </p>
+            <a href="#" onClick={(e) => { e.preventDefault(); alert('Opção de cadastro será implementada'); }} style={{
+              color: '#a78bfa',
+              fontSize: '0.95rem',
+              textDecoration: 'none',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }} onMouseOver={(e) => {
+              e.target.style.textDecoration = 'underline';
+              e.target.style.opacity = '0.8';
+            }} onMouseOut={(e) => {
+              e.target.style.textDecoration = 'none';
+              e.target.style.opacity = '1';
+            }}>
+              Cadastre-se agora
+            </a>
+          </div>
         </form>
       </div>
     </div>
