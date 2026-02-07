@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FiPlus, FiTrash2, FiSearch } from 'react-icons/fi';
 import apiClient, { withRetry } from '../utils/apiClient';
 import { showSuccess, showError } from '../utils/toast';
-import { validateRawMaterial, formatErrors } from '../utils/validation';
+import { validateRawMaterial } from '../utils/validation';
 
 /**
  * Página de Matérias-primas
@@ -48,7 +48,7 @@ function RawMaterialPage() {
     
     if (!validation.valid) {
       setValidationErrors(validation.errors);
-      showError(`Validation errors:\n${formatErrors(validation.errors)}`);
+      showError(validation.errors[0]);
       return;
     }
 

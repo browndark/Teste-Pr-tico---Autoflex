@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FiPlus, FiTrash2 } from 'react-icons/fi';
 import apiClient, { withRetry } from '../utils/apiClient';
 import { showSuccess, showError } from '../utils/toast';
-import { validateAssociation, formatErrors } from '../utils/validation';
+import { validateAssociation } from '../utils/validation';
 
 /**
  * Página de Associação Produto-Matéria-prima
@@ -62,13 +62,13 @@ function AssociationPage() {
     const validation = validateAssociation(form);
     if (!validation.valid) {
       setValidationErrors(validation.errors);
-      showError(`Validation errors:\n${formatErrors(validation.errors)}`);
+      showError(validation.errors[0]);
       return;
     }
     
     // Validate stock before sending
     if (requiredQty > availableQty) {
-      showError(`❌ INSUFFICIENT STOCK!\n\nRequired: ${requiredQty} units\nAvailable: ${availableQty} units\nMaterial: "${rawMaterial?.name}"`);
+      showError(`Insufficient stock! Need ${requiredQty}, have only ${availableQty}`);
       return;
     }
     
