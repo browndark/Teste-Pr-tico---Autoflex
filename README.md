@@ -24,7 +24,7 @@ docker compose up
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 | Component | Technology | Port | Purpose |
 |-----------|-----------|------|---------|
@@ -34,20 +34,20 @@ docker compose up
 
 ### Key Features
 
-✅ **Complete Inventory Management**
+** Complete Inventory Management**
 - Product catalog with pricing & stock tracking
 - Raw material management & associations
 - Production suggestion algorithm (Greedy-based)
 - Automatic cost optimization
 
-✅ **Professional Stack**
+** Professional Stack**
 - Quarkus (Java 11+) with native compilation support
 - React with Redux for state management
 - PostgreSQL with migrations (Flyway)
 - Docker multi-stage builds
 - Comprehensive testing (JUnit, Jest, Cypress, Robot Framework)
 
-✅ **Production Ready**
+** Production Ready**
 - CI/CD via GitHub Actions (5 workflows)
 - Security scanning (Trivy, npm audit)
 - Code quality (SonarCloud integration ready)
@@ -56,7 +56,7 @@ docker compose up
 
 ---
 
-## 📋 Requirements Coverage
+## Requirements Coverage
 
 ### Functional Requirements (RF)
 - [x] RF001: Product CRUD with pricing
@@ -79,7 +79,7 @@ docker compose up
 
 ---
 
-## 🚀 Deployment Options
+## Deployment Options
 
 ### Option 1: Docker Compose (Recommended for Development)
 
@@ -109,14 +109,12 @@ npm start
 ```
 
 **Database:**
-```bash
-# Create PostgreSQL database manually
-psql -U postgres -c "CREATE DATABASE inventory_db;"
-```
+
+*Note: Database is automatically created and initialized by Docker Compose with the name `estoque`*
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Unit & Integration Tests
 ```bash
@@ -152,7 +150,7 @@ robot tests/robot/
 
 ---
 
-## 📚 Project Structure
+## Project Structure
 
 ```
 .
@@ -191,9 +189,8 @@ robot tests/robot/
 │   └── [7+ more files]
 │
 ├── config/
-│   ├── docker-compose.yml           # Service orchestration
 │   ├── .gitignore                   # Git patterns
-│   └── Docker files                 # Container configs
+│   └── [Configuration files]
 │
 ├── scripts/
 │   ├── setup.sh / setup.bat         # One-command setup
@@ -207,12 +204,13 @@ robot tests/robot/
 │   ├── deploy.yml
 │   └── quick-tests.yml
 │
+├── docker-compose.yml               # Service orchestration (Database, Backend, Frontend)
 └── README.md                        # This file
 ```
 
 ---
 
-## 🎯 Algorithm: Production Suggestion
+## Algorithm: Production Suggestion
 
 **Problem:** Minimize production cost while satisfying stock demand.
 
@@ -234,20 +232,20 @@ robot tests/robot/
 
 ---
 
-## 🔐 Security
+## Security
 
-✅ Input validation on all fields
-✅ SQL injection prevention (parameterized queries)
-✅ CORS configuration for safe API access
-✅ Prepared statements in database queries
-✅ Environment variables for sensitive data
-✅ Security headers in HTTP responses
-✅ Trivy vulnerability scanning (CI/CD)
-✅ npm audit for dependency vulnerabilities
+- Input validation on all fields
+- SQL injection prevention (parameterized queries)
+- CORS configuration for safe API access
+- Prepared statements in database queries
+- Environment variables for sensitive data
+- Security headers in HTTP responses
+- Trivy vulnerability scanning (CI/CD)
+- npm audit for dependency vulnerabilities
 
 ---
 
-## 📖 API Documentation
+## API Documentation
 
 ### Base URL
 ```
@@ -307,7 +305,7 @@ Response: 200 OK
 
 ---
 
-## 🛠️ Development Guide
+## Development Guide
 
 ### Local Development (Without Docker)
 
@@ -344,19 +342,19 @@ V002__add_new_table.sql
 
 ---
 
-## 📊 Code Quality
+## Code Quality
 
 | Metric | Status |
 |--------|--------|
-| Tests | ✅ 30+ unit tests + E2E |
-| Coverage | ✅ Multiple coverage suites |
-| Linting | ✅ ESLint configured |
-| Docker Builds | ✅ Multi-stage optimized |
-| CI/CD | ✅ 5 GitHub Actions workflows |
+| Tests | 30+ unit tests + E2E |
+| Coverage | Multiple coverage suites |
+| Linting | ESLint configured |
+| Docker Builds | Multi-stage optimized |
+| CI/CD | 5 GitHub Actions workflows |
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Port Already in Use
 ```bash
@@ -386,7 +384,7 @@ npm start
 
 ---
 
-## 📝 Documentation
+## Documentation
 
 Complete documentation available in `/docs`:
 
@@ -399,7 +397,7 @@ Complete documentation available in `/docs`:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 ### Commit Message Format
 ```
@@ -425,13 +423,13 @@ Closes #42
 
 ---
 
-## 📄 License
+## License
 
 This project is provided as a test/evaluation deliverable.
 
 ---
 
-## ✨ Highlights
+## Highlights
 
 ### What Makes This Production Ready
 
@@ -456,7 +454,7 @@ This project is provided as a test/evaluation deliverable.
 
 ---
 
-## 🚀 Next Steps
+## Next Steps
 
 1. **Clone the repo**: `git clone <repo-url>`
 2. **Run with Docker**: `docker compose up`
@@ -466,8 +464,6 @@ This project is provided as a test/evaluation deliverable.
 
 ---
 
-## 📞 Support
-
 For detailed technical information, refer to:
 - [QUICK_START.md](docs/QUICK_START.md) - Developer quickstart
 - [ARCHITECTURE.md](docs/ARCHITECTURE.md) - System design  
@@ -475,6 +471,6 @@ For detailed technical information, refer to:
 
 ---
 
-**Status:** ✅ Production Ready | ✅ Fully Tested | ✅ Well Documented
+**Status:** Production Ready | Fully Tested | Well Documented
 
 *Last Updated: February 2026*
