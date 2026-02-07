@@ -46,20 +46,19 @@ function App() {
         background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%)',
         border: '1px solid rgba(139, 92, 246, 0.2)',
         borderRadius: '12px',
-        padding: '0.875rem 1.25rem',
+        padding: '1rem 1.5rem',
         marginBottom: '1.5rem',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        gap: '1.5rem',
-        backdropFilter: 'blur(10px)',
-        minHeight: '60px'
+        alignItems: 'center',
+        gap: '2rem',
+        backdropFilter: 'blur(10px)'
       }}>
         <div style={{ flex: '1 1 auto', minWidth: '0' }}>
           <h1 className="main-title devui-title" style={{ 
-            marginBottom: '0.125rem',
-            fontSize: '1.2rem',
-            lineHeight: '1.3',
+            marginBottom: '0.25rem',
+            fontSize: '1.25rem',
+            lineHeight: '1.2',
             fontWeight: 700
           }}>Gerenciamento de Inventário</h1>
           <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: 0, lineHeight: '1.2' }}>Sistema de Controle de Produtos e Matérias-primas</p>
@@ -68,15 +67,14 @@ function App() {
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '1rem',
-          flexShrink: 0,
-          whiteSpace: 'nowrap'
+          gap: '1.25rem',
+          flexShrink: 0
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
-            paddingRight: '1rem',
+            paddingRight: '1.25rem',
             borderRight: '1px solid rgba(139, 92, 246, 0.2)'
           }}>
             <div style={{
@@ -96,9 +94,9 @@ function App() {
               {getInitials(user.name)}
             </div>
             <div style={{ minWidth: '0' }}>
-              <p style={{ color: '#a78bfa', fontSize: '0.75rem', margin: '0', fontWeight: 500 }}>LOGADO</p>
-              <p style={{ color: '#f3f4f6', fontSize: '0.9rem', fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.name}</p>
-              <p style={{ color: '#9ca3af', fontSize: '0.7rem', margin: '0.1rem 0 0 0', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.email}</p>
+              <p style={{ color: '#a78bfa', fontSize: '0.7rem', margin: '0', fontWeight: 500 }}>LOGADO</p>
+              <p style={{ color: '#f3f4f6', fontSize: '0.85rem', fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.name}</p>
+              <p style={{ color: '#9ca3af', fontSize: '0.7rem', margin: '0.05rem 0 0 0', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.email}</p>
             </div>
           </div>
 
@@ -115,7 +113,8 @@ function App() {
               fontWeight: 600,
               transition: 'all 0.3s ease',
               boxShadow: '0 2px 8px rgba(239, 68, 68, 0.2)',
-              flexShrink: 0
+              flexShrink: 0,
+              height: 'fit-content'
             }}
             onMouseOver={(e) => e.target.style.background = '#dc2626'}
             onMouseOut={(e) => e.target.style.background = '#ef4444'}
