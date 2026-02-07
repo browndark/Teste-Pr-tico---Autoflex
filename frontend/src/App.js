@@ -50,18 +50,26 @@ function App() {
         marginBottom: '2rem',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        backdropFilter: 'blur(10px)'
+        alignItems: 'flex-start',
+        gap: '2rem',
+        backdropFilter: 'blur(10px)',
+        minHeight: '80px'
       }}>
-        <div>
-          <h1 className="main-title devui-title" style={{ marginBottom: '0.25rem' }}>Gerenciamento de Inventário</h1>
+        <div style={{ flex: '1 1 auto', minWidth: '0' }}>
+          <h1 className="main-title devui-title" style={{ 
+            marginBottom: '0.25rem',
+            fontSize: '1.75rem',
+            lineHeight: '1.3'
+          }}>Gerenciamento de Inventário</h1>
           <p style={{ color: '#9ca3af', fontSize: '0.9rem', margin: 0 }}>Sistema de Controle de Produtos e Matérias-primas</p>
         </div>
         
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '1.5rem'
+          gap: '1.5rem',
+          flexShrink: 0,
+          whiteSpace: 'nowrap'
         }}>
           <div style={{
             display: 'flex',
@@ -81,14 +89,15 @@ function App() {
               color: 'white',
               fontWeight: 700,
               fontSize: '1rem',
-              boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)'
+              boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)',
+              flexShrink: 0
             }}>
               {getInitials(user.name)}
             </div>
-            <div>
+            <div style={{ minWidth: '0' }}>
               <p style={{ color: '#a78bfa', fontSize: '0.8rem', margin: '0 0 0.2rem 0', fontWeight: 500 }}>LOGADO</p>
-              <p style={{ color: '#f3f4f6', fontSize: '1rem', fontWeight: 600, margin: 0 }}>{user.name}</p>
-              <p style={{ color: '#9ca3af', fontSize: '0.75rem', margin: '0.2rem 0 0 0' }}>{user.email}</p>
+              <p style={{ color: '#f3f4f6', fontSize: '1rem', fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>{user.name}</p>
+              <p style={{ color: '#9ca3af', fontSize: '0.75rem', margin: '0.2rem 0 0 0', overflow: 'hidden', textOverflow: 'ellipsis' }}>{user.email}</p>
             </div>
           </div>
 
@@ -104,7 +113,8 @@ function App() {
               fontSize: '0.9rem',
               fontWeight: 600,
               transition: 'all 0.3s ease',
-              boxShadow: '0 2px 8px rgba(239, 68, 68, 0.2)'
+              boxShadow: '0 2px 8px rgba(239, 68, 68, 0.2)',
+              flexShrink: 0
             }}
             onMouseOver={(e) => e.target.style.background = '#dc2626'}
             onMouseOut={(e) => e.target.style.background = '#ef4444'}
