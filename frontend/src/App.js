@@ -33,7 +33,7 @@ function App() {
   if (!user) {
     return (
       <div className="container">
-        <h1 className="main-title">Gerenciamento de Inventário</h1>
+        <h1 className="main-title">Inventory Management</h1>
         <LoginPage />
       </div>
     );
@@ -61,8 +61,8 @@ function App() {
             lineHeight: '1.2',
             fontWeight: 700,
             color: '#d0b4fe'
-          }}>Gerenciamento de Inventário</h1>
-          <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: 0, lineHeight: '1.2' }}>Sistema de Controle de Produtos e Matérias-primas</p>
+          }}>Inventory Management</h1>
+          <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: 0, lineHeight: '1.2' }}>Product and Raw Material Control System</p>
         </div>
         
         <div style={{
@@ -96,7 +96,7 @@ function App() {
               {getInitials(user.name)}
             </div>
             <div style={{ minWidth: '0' }}>
-              <p style={{ color: '#a78bfa', fontSize: '0.7rem', margin: '0', fontWeight: 500 }}>LOGADO</p>
+              <p style={{ color: '#a78bfa', fontSize: '0.7rem', margin: '0', fontWeight: 500 }}>LOGGED IN</p>
               <p style={{ color: '#f3f4f6', fontSize: '0.85rem', fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.name}</p>
               <p style={{ color: '#9ca3af', fontSize: '0.7rem', margin: '0.05rem 0 0 0', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.1' }}>{user.email}</p>
             </div>
@@ -120,7 +120,7 @@ function App() {
             onMouseOver={(e) => e.target.style.background = '#dc2626'}
             onMouseOut={(e) => e.target.style.background = '#ef4444'}
           >
-            Sair
+            Log Out
           </button>
         </div>
       </header>

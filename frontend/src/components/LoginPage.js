@@ -64,22 +64,22 @@ function LoginPage() {
     e.preventDefault();
     
     if (!signupForm.name || !signupForm.email || !signupForm.password || !signupForm.confirmPassword) {
-      setSignupMessage('Por favor, preencha todos os campos.');
+      setSignupMessage('Please fill in all fields.');
       return;
     }
 
     if (signupForm.password !== signupForm.confirmPassword) {
-      setSignupMessage('As senhas não correspondem.');
+      setSignupMessage('Passwords do not match.');
       return;
     }
 
     if (signupForm.password.length < 6) {
-      setSignupMessage('A senha deve ter no mínimo 6 caracteres.');
+      setSignupMessage('Password must be at least 6 characters long.');
       return;
     }
 
     if (!signupForm.agreeTerms) {
-      setSignupMessage('Você deve aceitar os Termos de Uso e Privacidade.');
+      setSignupMessage('You must accept the Terms of Use and Privacy Policy.');
       return;
     }
 
@@ -87,7 +87,7 @@ function LoginPage() {
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     setEmailVerificationCode(code);
     setShowVerification(true);
-    setSignupMessage(`Código de verificação enviado para ${signupForm.email}`);
+    setSignupMessage(`Verification code sent to ${signupForm.email}`);
   }
 
   function handleVerifyEmail(e) {
@@ -115,7 +115,7 @@ function LoginPage() {
       setVerificationInput('');
       setSignupMessage('');
     } else {
-      setSignupMessage('Código de verificação inválido. Tente novamente.');
+      setSignupMessage('Invalid verification code. Try again.');
     }
   }
 
@@ -123,7 +123,7 @@ function LoginPage() {
     e.preventDefault();
     if (recoveryEmail) {
       setRecoverySuccess(true);
-      setRecoveryMessage(`Email de recuperação enviado para ${recoveryEmail}. Verifique sua caixa de entrada.`);
+      setRecoveryMessage(`Recovery email sent to ${recoveryEmail}. Check your inbox.`);
       setTimeout(() => {
         setRecoveryEmail('');
         setRecoverySuccess(false);
@@ -173,7 +173,7 @@ function LoginPage() {
             {getInitials(user.name)}
           </div>
           <div>
-            <p style={{ color: '#a78bfa', fontSize: '0.85rem', margin: '0 0 0.3rem 0', fontWeight: 500 }}>Usuário Logado</p>
+            <p style={{ color: '#a78bfa', fontSize: '0.85rem', margin: '0 0 0.3rem 0', fontWeight: 500 }}>Logged In User</p>
             <p style={{ color: '#f3f4f6', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>{user.name}</p>
             <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: '0.25rem 0 0 0' }}>{user.email}</p>
           </div>
@@ -195,7 +195,7 @@ function LoginPage() {
           onMouseOver={(e) => e.target.style.background = '#dc2626'}
           onMouseOut={(e) => e.target.style.background = '#ef4444'}
         >
-          Sair
+          Logout
         </button>
       </div>
     );
@@ -239,7 +239,7 @@ function LoginPage() {
             transition: 'all 0.3s ease'
           }}
         >
-          Entrar
+          Login
         </button>
         <button
           onClick={() => {
@@ -260,7 +260,7 @@ function LoginPage() {
             transition: 'all 0.3s ease'
           }}
         >
-          Cadastro
+          Sign Up
         </button>
         <button
           onClick={() => {
@@ -281,7 +281,7 @@ function LoginPage() {
             transition: 'all 0.3s ease'
           }}
         >
-          Recuperar
+          Password Recovery
         </button>
       </div>
 
@@ -301,7 +301,7 @@ function LoginPage() {
             marginBottom: '2rem',
             fontSize: '1.5rem',
             fontWeight: 700
-          }}>Acesso ao Sistema</h2>
+          }}>System Access</h2>
           
           <form onSubmit={handleLoginSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
             <div>
@@ -311,13 +311,13 @@ function LoginPage() {
                 fontWeight: 600,
                 display: 'block',
                 marginBottom: '0.5rem'
-              }}>Nome Completo</label>
+              }}>Full Name</label>
               <input
                 id="login-name"
                 name="name"
                 value={loginForm.name}
                 onChange={handleLoginChange}
-                placeholder="Digite seu nome"
+                placeholder="Enter your name"
                 autoComplete="name"
                 required
                 style={{
@@ -344,14 +344,14 @@ function LoginPage() {
                 fontWeight: 600,
                 display: 'block',
                 marginBottom: '0.5rem'
-              }}>Email Corporativo</label>
+              }}>Corporate Email</label>
               <input
                 id="login-email"
                 name="email"
                 type="email"
                 value={loginForm.email}
                 onChange={handleLoginChange}
-                placeholder="seu.email@empresa.com"
+                placeholder="your.email@company.com"
                 autoComplete="email"
                 required
                 style={{
@@ -378,7 +378,7 @@ function LoginPage() {
                   fontSize: '0.9rem',
                   fontWeight: 600,
                   display: 'block'
-                }}>Senha</label>
+                }}>Password</label>
                 <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('recovery'); }} style={{
                   color: '#a78bfa',
                   fontSize: '0.8rem',
@@ -386,7 +386,7 @@ function LoginPage() {
                   cursor: 'pointer',
                   transition: 'all 0.3s ease'
                 }} onMouseOver={(e) => e.target.style.opacity = '0.7'} onMouseOut={(e) => e.target.style.opacity = '1'}>
-                  Perdeu sua senha?
+                  Forgot your password?
                 </a>
               </div>
               <div style={{ position: 'relative' }}>
@@ -396,7 +396,7 @@ function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={loginForm.password}
                   onChange={handleLoginChange}
-                  placeholder="Digite sua senha"
+                  placeholder="Enter your password"
                   autoComplete="current-password"
                   required
                   style={{
@@ -455,7 +455,7 @@ function LoginPage() {
               onMouseOver={(e) => e.target.style.boxShadow = '0 6px 16px rgba(139, 92, 246, 0.4)'}
               onMouseOut={(e) => e.target.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.3)'}
             >
-              Entrar no Sistema
+              Log In
             </button>
           </form>
         </div>
@@ -477,22 +477,22 @@ function LoginPage() {
             marginBottom: '1.5rem',
             fontSize: '1.5rem',
             fontWeight: 700
-          }}>Criar Conta</h2>
+          }}>Create Account</h2>
 
           {!showVerification ? (
             <>
               {signupMessage && (
                 <div style={{
                   padding: '0.875rem',
-                  background: signupMessage.includes('Todas') || signupMessage.includes('inválido') || signupMessage.includes('não correspondem') || signupMessage.includes('mínimo') || signupMessage.includes('aceitar') 
+                  background: signupMessage.includes('fill') || signupMessage.includes('invalid') || signupMessage.includes('match') || signupMessage.includes('least') || signupMessage.includes('accept') 
                     ? 'rgba(239, 68, 68, 0.15)' 
                     : 'rgba(34, 197, 94, 0.15)',
-                  border: signupMessage.includes('Todas') || signupMessage.includes('inválido') || signupMessage.includes('não correspondem') || signupMessage.includes('mínimo') || signupMessage.includes('aceitar')
+                  border: signupMessage.includes('fill') || signupMessage.includes('invalid') || signupMessage.includes('match') || signupMessage.includes('least') || signupMessage.includes('accept')
                     ? '1px solid rgba(239, 68, 68, 0.3)'
                     : '1px solid rgba(34, 197, 94, 0.3)',
                   borderRadius: '6px',
                   marginBottom: '1rem',
-                  color: signupMessage.includes('Todas') || signupMessage.includes('inválido') || signupMessage.includes('não correspondem') || signupMessage.includes('mínimo') || signupMessage.includes('aceitar')
+                  color: signupMessage.includes('fill') || signupMessage.includes('invalid') || signupMessage.includes('match') || signupMessage.includes('least') || signupMessage.includes('accept')
                     ? '#fca5a5'
                     : '#86efac',
                   fontSize: '0.9rem'
@@ -509,14 +509,14 @@ function LoginPage() {
                     fontWeight: 600,
                     display: 'block',
                     marginBottom: '0.5rem'
-                  }}>Nome Completo</label>
+                  }}>Full Name</label>
                   <input
                     id="signup-name"
                     type="text"
                     name="name"
                     value={signupForm.name}
                     onChange={handleSignupChange}
-                    placeholder="Seu nome completo"
+                    placeholder="Your full name"
                     required
                     style={{
                       width: '100%',
@@ -542,14 +542,14 @@ function LoginPage() {
                     fontWeight: 600,
                     display: 'block',
                     marginBottom: '0.5rem'
-                  }}>Email Corporativo</label>
+                  }}>Corporate Email</label>
                   <input
                     id="signup-email"
                     type="email"
                     name="email"
                     value={signupForm.email}
                     onChange={handleSignupChange}
-                    placeholder="seu.email@empresa.com"
+                    placeholder="your.email@company.com"
                     required
                     style={{
                       width: '100%',
@@ -575,7 +575,7 @@ function LoginPage() {
                     fontWeight: 600,
                     display: 'block',
                     marginBottom: '0.5rem'
-                  }}>Senha</label>
+                  }}>Password</label>
                   <div style={{ position: 'relative' }}>
                     <input
                       id="signup-password"
@@ -583,7 +583,7 @@ function LoginPage() {
                       name="password"
                       value={signupForm.password}
                       onChange={handleSignupChange}
-                      placeholder="Mínimo 6 caracteres"
+                      placeholder="Minimum 6 characters"
                       autoComplete="new-password"
                       style={{
                         width: '100%',
@@ -628,7 +628,7 @@ function LoginPage() {
                     fontWeight: 600,
                     display: 'block',
                     marginBottom: '0.5rem'
-                  }}>Confirmar Senha</label>
+                  }}>Confirm Password</label>
                   <div style={{ position: 'relative' }}>
                     <input
                       id="signup-confirm-password"
@@ -636,7 +636,7 @@ function LoginPage() {
                       name="confirmPassword"
                       value={signupForm.confirmPassword}
                       onChange={handleSignupChange}
-                      placeholder="Confirme sua senha"
+                      placeholder="Confirm your password"
                       autoComplete="new-password"
                       style={{
                         width: '100%',
@@ -686,7 +686,7 @@ function LoginPage() {
                     margin: '0 0 0.75rem 0',
                     lineHeight: '1.4'
                   }} id="terms-description">
-                    Ao registrar, você concorda com nossos Termos de Serviço e Política de Privacidade.
+                    By registering, you agree to our Terms of Service and Privacy Policy.
                   </p>
                   <label htmlFor="agree-terms" style={{
                     display: 'flex',
@@ -709,7 +709,7 @@ function LoginPage() {
                       }}
                     />
                     <span style={{ fontSize: '0.9rem' }}>
-                      Aceito os Termos de Uso e Privacidade
+                      I accept the Terms of Use and Privacy Policy
                     </span>
                   </label>
                 </div>
@@ -733,7 +733,7 @@ function LoginPage() {
                   onMouseOver={(e) => e.target.style.boxShadow = '0 6px 16px rgba(139, 92, 246, 0.4)'}
                   onMouseOut={(e) => e.target.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.3)'}
                 >
-                  Prosseguir para Verificação
+                  Proceed to Verification
                 </button>
               </form>
             </>
@@ -763,7 +763,7 @@ function LoginPage() {
                   color: '#a78bfa',
                   fontSize: '1.3rem',
                   marginBottom: '0.5rem'
-                }}>Verifique seu Email</h3>
+                }}>Verify Your Email</h3>
                 
                 <p style={{
                   color: '#d1d5db',
@@ -771,7 +771,7 @@ function LoginPage() {
                   marginBottom: '1.5rem',
                   lineHeight: '1.5'
                 }}>
-                  Um código de verificação foi enviado para:<br/>
+                  A verification code has been sent to:<br/>
                   <span style={{ color: '#a78bfa', fontWeight: 600 }}>{signupForm.email}</span>
                 </p>
 
@@ -797,7 +797,7 @@ function LoginPage() {
                       fontWeight: 600,
                       display: 'block',
                       marginBottom: '0.75rem'
-                    }}>Digite o código de 6 dígitos:</label>
+                    }}>Enter the 6-digit code:</label>
                     <input
                       id="verify-code"
                       type="text"
@@ -846,7 +846,7 @@ function LoginPage() {
                     onMouseOver={(e) => e.target.style.boxShadow = '0 6px 16px rgba(139, 92, 246, 0.4)'}
                     onMouseOut={(e) => e.target.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.3)'}
                   >
-                    Confirmar Verificação
+                    Confirm Verification
                   </button>
 
                   <button
@@ -877,7 +877,7 @@ function LoginPage() {
                       e.target.background = 'transparent';
                     }}
                   >
-                    Voltar
+                    Back
                   </button>
                 </form>
 
@@ -886,7 +886,7 @@ function LoginPage() {
                   fontSize: '0.85rem',
                   marginTop: '1.5rem'
                 }}>
-                  Não recebeu o código? Verifique a pasta de spam.
+                  Did not receive the code? Check your spam folder.
                 </p>
               </div>
             </>
@@ -910,7 +910,7 @@ function LoginPage() {
             marginBottom: '1.5rem',
             fontSize: '1.5rem',
             fontWeight: 700
-          }}>Recuperar Senha</h2>
+          }}>Reset Password</h2>
 
           <p style={{
             color: '#d1d5db',
@@ -919,7 +919,7 @@ function LoginPage() {
             fontSize: '0.95rem',
             lineHeight: '1.5'
           }}>
-            Digite seu email corporativo e enviaremos instruções para recuperar sua senha.
+            Enter your corporate email and we'll send you instructions to reset your password.
           </p>
 
           {recoveryMessage && (
@@ -944,13 +944,13 @@ function LoginPage() {
                 fontWeight: 600,
                 display: 'block',
                 marginBottom: '0.5rem'
-              }}>Email Corporativo</label>
+              }}>Corporate Email</label>
               <input
                 id="recovery-email"
                 type="email"
                 value={recoveryEmail}
                 onChange={(e) => setRecoveryEmail(e.target.value)}
-                placeholder="seu.email@empresa.com"
+                placeholder="your.email@company.com"
                 autoComplete="email"
                 style={{
                   width: '100%',
@@ -988,7 +988,7 @@ function LoginPage() {
               onMouseOver={(e) => e.target.style.boxShadow = '0 6px 16px rgba(139, 92, 246, 0.4)'}
               onMouseOut={(e) => e.target.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.3)'}
             >
-              Enviar Email de Recuperação
+              Send Recovery Email
             </button>
 
             <button
@@ -1021,7 +1021,7 @@ function LoginPage() {
                 e.target.background = 'transparent';
               }}
             >
-              Voltar ao Login
+              Back to Login
             </button>
           </form>
 
@@ -1031,7 +1031,7 @@ function LoginPage() {
             marginTop: '1.5rem',
             textAlign: 'center'
           }}>
-            Não recebeu o email? Verifique sua pasta de spam ou entre em contato com o suporte.
+            Did not receive the email? Check your spam folder or contact support.
           </p>
         </div>
       )}
