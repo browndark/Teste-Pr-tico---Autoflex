@@ -28,7 +28,7 @@ Input Text Field
 Get Error Message
     [Documentation]    Get the current error message displayed
     ${error}=    Get Text    xpath=//div[contains(@style, 'rgba(239, 68, 68')]
-    [Return]    ${error}
+    RETURN    ${error}
 
 Navigate To Login
     [Documentation]    Navigate to login tab
