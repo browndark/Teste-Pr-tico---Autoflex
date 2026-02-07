@@ -305,7 +305,7 @@ function LoginPage() {
           
           <form onSubmit={handleLoginSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
             <div>
-              <label style={{
+              <label htmlFor="login-name" style={{
                 color: '#d1d5db',
                 fontSize: '0.9rem',
                 fontWeight: 600,
@@ -313,6 +313,7 @@ function LoginPage() {
                 marginBottom: '0.5rem'
               }}>Nome Completo</label>
               <input
+                id="login-name"
                 name="name"
                 value={loginForm.name}
                 onChange={handleLoginChange}
@@ -337,7 +338,7 @@ function LoginPage() {
             </div>
 
             <div>
-              <label style={{
+              <label htmlFor="login-email" style={{
                 color: '#d1d5db',
                 fontSize: '0.9rem',
                 fontWeight: 600,
@@ -345,6 +346,7 @@ function LoginPage() {
                 marginBottom: '0.5rem'
               }}>Email Corporativo</label>
               <input
+                id="login-email"
                 name="email"
                 type="email"
                 value={loginForm.email}
@@ -371,7 +373,7 @@ function LoginPage() {
 
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                <label style={{
+                <label htmlFor="login-password" style={{
                   color: '#d1d5db',
                   fontSize: '0.9rem',
                   fontWeight: 600,
@@ -389,12 +391,13 @@ function LoginPage() {
               </div>
               <div style={{ position: 'relative' }}>
                 <input
+                  id="login-password"
                   name="password"
                   type={showPassword ? 'text' : 'password'}
                   value={loginForm.password}
                   onChange={handleLoginChange}
                   placeholder="Digite sua senha"
-                  autoComplete="password"
+                  autoComplete="current-password"
                   required
                   style={{
                     width: '100%',
@@ -500,7 +503,7 @@ function LoginPage() {
 
               <form onSubmit={handleSignupSubmit} style={{ display: 'grid', gap: '1rem' }}>
                 <div>
-                  <label style={{
+                  <label htmlFor="signup-name" style={{
                     color: '#d1d5db',
                     fontSize: '0.9rem',
                     fontWeight: 600,
@@ -508,6 +511,7 @@ function LoginPage() {
                     marginBottom: '0.5rem'
                   }}>Nome Completo</label>
                   <input
+                    id="signup-name"
                     type="text"
                     name="name"
                     value={signupForm.name}
@@ -532,7 +536,7 @@ function LoginPage() {
                 </div>
 
                 <div>
-                  <label style={{
+                  <label htmlFor="signup-email" style={{
                     color: '#d1d5db',
                     fontSize: '0.9rem',
                     fontWeight: 600,
@@ -540,6 +544,7 @@ function LoginPage() {
                     marginBottom: '0.5rem'
                   }}>Email Corporativo</label>
                   <input
+                    id="signup-email"
                     type="email"
                     name="email"
                     value={signupForm.email}
@@ -564,7 +569,7 @@ function LoginPage() {
                 </div>
 
                 <div>
-                  <label style={{
+                  <label htmlFor="signup-password" style={{
                     color: '#d1d5db',
                     fontSize: '0.9rem',
                     fontWeight: 600,
@@ -573,12 +578,13 @@ function LoginPage() {
                   }}>Senha</label>
                   <div style={{ position: 'relative' }}>
                     <input
+                      id="signup-password"
                       type={showPassword ? 'text' : 'password'}
                       name="password"
                       value={signupForm.password}
                       onChange={handleSignupChange}
                       placeholder="Mínimo 6 caracteres"
-                      required
+                      autoComplete="new-password"
                       style={{
                         width: '100%',
                         padding: '0.875rem 1rem',
@@ -616,7 +622,7 @@ function LoginPage() {
                 </div>
 
                 <div>
-                  <label style={{
+                  <label htmlFor="signup-confirm-password" style={{
                     color: '#d1d5db',
                     fontSize: '0.9rem',
                     fontWeight: 600,
@@ -625,12 +631,13 @@ function LoginPage() {
                   }}>Confirmar Senha</label>
                   <div style={{ position: 'relative' }}>
                     <input
+                      id="signup-confirm-password"
                       type={showConfirmPassword ? 'text' : 'password'}
                       name="confirmPassword"
                       value={signupForm.confirmPassword}
                       onChange={handleSignupChange}
                       placeholder="Confirme sua senha"
-                      required
+                      autoComplete="new-password"
                       style={{
                         width: '100%',
                         padding: '0.875rem 1rem',
@@ -678,10 +685,10 @@ function LoginPage() {
                     fontSize: '0.85rem',
                     margin: '0 0 0.75rem 0',
                     lineHeight: '1.4'
-                  }}>
+                  }} id="terms-description">
                     Ao registrar, você concorda com nossos Termos de Serviço e Política de Privacidade.
                   </p>
-                  <label style={{
+                  <label htmlFor="agree-terms" style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.75rem',
@@ -689,10 +696,12 @@ function LoginPage() {
                     color: '#d1d5db'
                   }}>
                     <input
+                      id="agree-terms"
                       type="checkbox"
                       name="agreeTerms"
                       checked={signupForm.agreeTerms}
                       onChange={handleSignupChange}
+                      aria-describedby="terms-description"
                       style={{
                         width: '18px',
                         height: '18px',
@@ -782,7 +791,7 @@ function LoginPage() {
 
                 <form onSubmit={handleVerifyEmail} style={{ display: 'grid', gap: '1.25rem' }}>
                   <div>
-                    <label style={{
+                    <label htmlFor="verify-code" style={{
                       color: '#d1d5db',
                       fontSize: '0.9rem',
                       fontWeight: 600,
@@ -790,11 +799,13 @@ function LoginPage() {
                       marginBottom: '0.75rem'
                     }}>Digite o código de 6 dígitos:</label>
                     <input
+                      id="verify-code"
                       type="text"
                       value={verificationInput}
                       onChange={(e) => setVerificationInput(e.target.value.slice(0, 6))}
                       placeholder="000000"
                       maxLength="6"
+                      inputMode="numeric"
                       required
                       style={{
                         width: '100%',
@@ -927,7 +938,7 @@ function LoginPage() {
 
           <form onSubmit={handlePasswordReset} style={{ display: 'grid', gap: '1.25rem' }}>
             <div>
-              <label style={{
+              <label htmlFor="recovery-email" style={{
                 color: '#d1d5db',
                 fontSize: '0.9rem',
                 fontWeight: 600,
@@ -935,11 +946,12 @@ function LoginPage() {
                 marginBottom: '0.5rem'
               }}>Email Corporativo</label>
               <input
+                id="recovery-email"
                 type="email"
                 value={recoveryEmail}
                 onChange={(e) => setRecoveryEmail(e.target.value)}
                 placeholder="seu.email@empresa.com"
-                required
+                autoComplete="email"
                 style={{
                   width: '100%',
                   padding: '0.875rem 1rem',
