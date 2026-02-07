@@ -1,6 +1,6 @@
 # Architecture & Technical Details
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -49,7 +49,7 @@
 
 ---
 
-## 📦 Component Hierarchy
+## Component Hierarchy
 
 ### Frontend
 ```
@@ -86,7 +86,7 @@ App.js (Main Container)
 
 ---
 
-## 🔄 Data Flow
+## Data Flow
 
 ### Create Product
 ```
@@ -141,7 +141,7 @@ Response (success or error)
 
 ---
 
-## ⚡ Performance Optimization
+## Performance Optimization
 
 ### Database
 - Indexes on `product.code` and `raw_material.code`
@@ -162,7 +162,7 @@ Response (success or error)
 
 ---
 
-## 🔄 Error Handling Strategy
+## Error Handling Strategy
 
 ```
 User Action
@@ -194,7 +194,7 @@ Try Make API Call
 
 ---
 
-## 🧪 Testing Strategy
+## Testing Strategy
 
 ### Unit Tests (Backend)
 ```
@@ -274,7 +274,7 @@ ALTER TABLE product_raw_material ADD CHECK (required_quantity > 0);
 
 ---
 
-## 📈 Scaling Considerations
+## Scaling Considerations
 
 ### Current Limitations
 - Single database instance
