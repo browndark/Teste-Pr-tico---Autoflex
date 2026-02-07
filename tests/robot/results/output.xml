@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.7 on win32)" generated="2026-02-07T14:06:39.444734" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot" source="C:\Users\Public\Workspace\quest hands\tests\robot">
+<suite id="s1-s1" name="Test Api" source="C:\Users\Public\Workspace\quest hands\tests\robot\test_api.robot">
+<test id="s1-s1-t1" name="API Health Check" line="21">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:39.541439" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:39.541263" elapsed="0.000311"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:39.540874" elapsed="0.000765"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:39.541727" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:41.615534" level="INFO">GET Request : url=http://localhost:8082/q/health 
+ path_url=/q/health 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-07T14:06:41.615599" level="INFO">GET Response : url=http://localhost:8082/q/health 
+ status=404, reason=Not Found 
+ headers={'Content-Type': 'application/json', 'content-length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-07T14:06:41.615741" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/q/health</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:39.541712" elapsed="2.074052"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:41.616282" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2026-02-07T14:06:41.616384" level="FAIL">404.0 != 200.0</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2026-02-07T14:06:41.615906" elapsed="0.000610">404.0 != 200.0</status>
+</kw>
+<kw name="Close API Session">
+<doc>Close the API session</doc>
+<status status="NOT RUN" start="2026-02-07T14:06:41.616680" elapsed="0.000019"/>
+</kw>
+<doc>Test that the API is responding</doc>
+<status status="FAIL" start="2026-02-07T14:06:39.540519" elapsed="2.076295">404.0 != 200.0</status>
+</test>
+<test id="s1-s1-t2" name="Get Products List" line="28">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:41.617550" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:41.617404" elapsed="0.000253"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:41.617238" elapsed="0.000470"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:41.617786" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:43.665106" level="INFO">GET Request : url=http://localhost:8082/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-07T14:06:43.665204" level="INFO">GET Response : url=http://localhost:8082/products 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'content-length': '75'} 
+ body=[{"id":8,"code":"VDFDF$#$%1515","name":"Lata","price":5.00,"quantity":100}] 
+ </msg>
+<msg time="2026-02-07T14:06:43.665304" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/products</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:41.617772" elapsed="2.047549"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:43.665807" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-02-07T14:06:43.665457" elapsed="0.000396"/>
+</kw>
+<kw name="Close API Session">
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:43.666187" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2026-02-07T14:06:43.666139" elapsed="0.000557"/>
+</kw>
+<doc>Close the API session</doc>
+<status status="PASS" start="2026-02-07T14:06:43.665978" elapsed="0.000766"/>
+</kw>
+<doc>Test retrieving products list</doc>
+<status status="PASS" start="2026-02-07T14:06:41.616998" elapsed="2.049837"/>
+</test>
+<test id="s1-s1-t3" name="Get Raw Materials List" line="35">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:43.667518" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:43.667387" elapsed="0.000224"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:43.667241" elapsed="0.000411"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:43.667725" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:45.741864" level="INFO">GET Request : url=http://localhost:8082/raw-materials 
+ path_url=/raw-materials 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-07T14:06:45.741921" level="INFO">GET Response : url=http://localhost:8082/raw-materials 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'content-length': '73'} 
+ body=[{"id":8,"code":"51561DSD","name":"Leite condesado","stockQuantity":100}] 
+ </msg>
+<msg time="2026-02-07T14:06:45.742002" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/raw-materials</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:43.667712" elapsed="2.074307"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:45.742467" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-02-07T14:06:45.742134" elapsed="0.000378"/>
+</kw>
+<kw name="Close API Session">
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:45.742820" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2026-02-07T14:06:45.742778" elapsed="0.000085"/>
+</kw>
+<doc>Close the API session</doc>
+<status status="PASS" start="2026-02-07T14:06:45.742628" elapsed="0.000383"/>
+</kw>
+<doc>Test retrieving raw materials list</doc>
+<status status="PASS" start="2026-02-07T14:06:43.667001" elapsed="2.076084"/>
+</test>
+<test id="s1-s1-t4" name="Get Product Raw Materials Associations" line="42">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:45.743708" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:45.743585" elapsed="0.000215"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:45.743461" elapsed="0.000380"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:45.743910" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:47.799664" level="INFO">GET Request : url=http://localhost:8082/products-raw-materials 
+ path_url=/products-raw-materials 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-07T14:06:47.799729" level="INFO">GET Response : url=http://localhost:8082/products-raw-materials 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'content-length': '203'} 
+ body=[{"id":9,"product":{"id":8,"code":"VDFDF$#$%1515","name":"Lata","price":5.00,"quantity":100},"rawMaterial":{"id":8,"code":"51561DSD","name":"Leite condesado","stockQuantity":100},"requiredQuantity":100}] 
+ </msg>
+<msg time="2026-02-07T14:06:47.799823" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/products-raw-materials</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:45.743897" elapsed="2.055946"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:47.800337" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-02-07T14:06:47.799977" elapsed="0.000402"/>
+</kw>
+<kw name="Close API Session">
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:47.800691" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2026-02-07T14:06:47.800641" elapsed="0.000097"/>
+</kw>
+<doc>Close the API session</doc>
+<status status="PASS" start="2026-02-07T14:06:47.800488" elapsed="0.000293"/>
+</kw>
+<doc>Test retrieving product-raw material associations</doc>
+<status status="PASS" start="2026-02-07T14:06:45.743218" elapsed="2.057637"/>
+</test>
+<test id="s1-s1-t5" name="Get Production Suggestion" line="49">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:47.801557" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:47.801408" elapsed="0.000245"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:47.801255" elapsed="0.000438"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:47.801760" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:49.871619" level="INFO">GET Request : url=http://localhost:8082/production-suggestion 
+ path_url=/production-suggestion 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-07T14:06:49.871673" level="INFO">GET Response : url=http://localhost:8082/production-suggestion 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'content-length': '131'} 
+ body={"totalValue":5.00,"products":[{"quantity":1,"product":{"id":8,"code":"VDFDF$#$%1515","name":"Lata","price":5.00,"quantity":100}}]} 
+ </msg>
+<msg time="2026-02-07T14:06:49.871754" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/production-suggestion</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:47.801748" elapsed="2.070023"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:49.872195" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-02-07T14:06:49.871887" elapsed="0.000346"/>
+</kw>
+<kw name="Close API Session">
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:49.872524" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2026-02-07T14:06:49.872485" elapsed="0.000077"/>
+</kw>
+<doc>Close the API session</doc>
+<status status="PASS" start="2026-02-07T14:06:49.872347" elapsed="0.000248"/>
+</kw>
+<doc>Test getting production suggestion</doc>
+<status status="PASS" start="2026-02-07T14:06:47.801013" elapsed="2.071647"/>
+</test>
+<test id="s1-s1-t6" name="Create Product Success" line="56">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:49.873232" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:49.873112" elapsed="0.000215"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:49.872998" elapsed="0.000370"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-07T14:06:49.873624" level="INFO">${product_data} = {'code': 'ROBOT_TEST_001', 'name': 'Test Product', 'price': '99.99', 'quantity': '10'}</msg>
+<var>${product_data}</var>
+<arg>code=ROBOT_TEST_001</arg>
+<arg>name=Test Product</arg>
+<arg>price=99.99</arg>
+<arg>quantity=10</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-07T14:06:49.873438" elapsed="0.000202"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:49.873719" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-02-07T14:06:51.984383" level="INFO">POST Request : url=http://localhost:8082/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '86', 'Content-Type': 'application/json'} 
+ body=b'{"code": "ROBOT_TEST_001", "name": "Test Product", "price": "99.99", "quantity": "10"}' 
+ </msg>
+<msg time="2026-02-07T14:06:51.984434" level="INFO">POST Response : url=http://localhost:8082/products 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'content-length': '82'} 
+ body={"id":9,"code":"ROBOT_TEST_001","name":"Test Product","price":99.99,"quantity":10} 
+ </msg>
+<msg time="2026-02-07T14:06:51.984611" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/products</arg>
+<arg>json=${product_data}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:49.873705" elapsed="2.110925"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:51.985066" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-02-07T14:06:51.984751" elapsed="0.000353"/>
+</kw>
+<kw name="Close API Session">
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:51.985375" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2026-02-07T14:06:51.985339" elapsed="0.000073"/>
+</kw>
+<doc>Close the API session</doc>
+<status status="PASS" start="2026-02-07T14:06:51.985207" elapsed="0.000240"/>
+</kw>
+<doc>Test creating a new product via API</doc>
+<status status="PASS" start="2026-02-07T14:06:49.872793" elapsed="2.112715"/>
+</test>
+<test id="s1-s1-t7" name="Create Product Without Code" line="64">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:51.986121" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:51.985998" elapsed="0.000217"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:51.985863" elapsed="0.000394"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-07T14:06:51.986440" level="INFO">${product_data} = {'name': 'Test Product', 'price': '99.99'}</msg>
+<var>${product_data}</var>
+<arg>name=Test Product</arg>
+<arg>price=99.99</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-07T14:06:51.986323" elapsed="0.000132"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:51.986529" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-02-07T14:06:54.057337" level="INFO">POST Request : url=http://localhost:8082/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '42', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test Product", "price": "99.99"}' 
+ </msg>
+<msg time="2026-02-07T14:06:54.057397" level="INFO">POST Response : url=http://localhost:8082/products 
+ status=500, reason=Internal Server Error 
+ headers={'content-type': 'application/json; charset=utf-8', 'content-length': '8632'} 
+ body={"details":"Error id 3626e2f4-2f93-4152-9464-4db18638b7d0-1, org.jboss.resteasy.spi.UnhandledException: javax.persistence.PersistenceException: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.example.model.Product.code","stack":"org.jboss.resteasy.spi.UnhandledException: javax.persistence.PersistenceException: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.example.model.Product.code\r\n\tat org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:105)\r\n\tat org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:359)\r\n\tat org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)\r\n\tat org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)\r\n\tat org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)\r\n\tat org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)\r\n\tat org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)\r\n\tat org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)\r\n\tat org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)\r\n\tat io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:82)\r\n\tat io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:147)\r\n\tat io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:93)\r\n\tat io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:576)\r\n\tat org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)\r\n\tat org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)\r\n\tat org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)\r\n\tat org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)\r\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)\r\n\tat java.base/java.lang.Thread.run(Thread.java:842)\r\nCaused by: javax.persistence.PersistenceException: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.example.model.Product.code\r\n\tat org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)\r\n\tat org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)\r\n\tat org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)\r\n\tat org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:762)\r\n\tat org.hibernate.internal.SessionImpl.persist(SessionImpl.java:742)\r\n\tat io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)\r\n\tat org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:241)\r\n\tat org.hibernate.Session_5b93bee577ae2f8d76647de04cfab36afbf52958_Synthetic_ClientProxy.persist(Unknown Source)\r\n\tat io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:101)\r\n\tat io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:96)\r\n\tat io.quarkus.hibernate.orm.panache.PanacheRepositoryBase.persist(PanacheRepositoryBase.java:54)\r\n\tat com.example.repository.ProductRepository_ClientProxy.persist(Unknown Source)\r\n\tat com.example.resource.ProductResource.create(ProductResource.java:26)\r\n\tat com.example.resource.ProductResource_Subclass.create$$superforward1(Unknown Source)\r\n\tat com.example.resource.ProductResource_Subclass$$function$$1.apply(Unknown Source)\r\n\tat io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:54)\r\n\tat io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:133)\r\n\tat io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:104)\r\n\tat io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)\r\n\tat io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:58)\r\n\tat io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)\r\n\tat io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)\r\n\tat io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)\r\n\tat io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:41)\r\n\tat io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:33)\r\n\tat com.example.resource.ProductResource_Subclass.create(Unknown Source)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\r\n\tat org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)\r\n\tat org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)\r\n\tat org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:660)\r\n\tat org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:524)\r\n\tat org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:474)\r\n\tat org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)\r\n\tat org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:476)\r\n\tat org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:434)\r\n\tat org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:408)\r\n\tat org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:69)\r\n\tat org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)\r\n\t... 15 more\r\nCaused by: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.example.model.Product.code\r\n\tat org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:111)\r\n\tat org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:55)\r\n\tat org.hibernate.action.internal.AbstractEntityInsertAction.nullifyTransientReferencesIfNotAlready(AbstractEntityInsertAction.java:116)\r\n\tat org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:72)\r\n\tat org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645)\r\n\tat org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282)\r\n\tat org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263)\r\n\tat org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317)\r\n\tat org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:329)\r\n\tat org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:286)\r\n\tat org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:192)\r\n\tat org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:122)\r\n\tat org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:185)\r\n\tat org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:128)\r\n\tat org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:55)\r\n\tat org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:107)\r\n\tat org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:756)\r\n\t... 52 more"} 
+ </msg>
+<msg time="2026-02-07T14:06:54.057560" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/products</arg>
+<arg>json=${product_data}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:51.986516" elapsed="2.071062"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:54.058018" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2026-02-07T14:06:54.058098" level="FAIL">500.0 != 400.0</msg>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2026-02-07T14:06:54.057698" elapsed="0.000464">500.0 != 400.0</status>
+</kw>
+<kw name="Close API Session">
+<doc>Close the API session</doc>
+<status status="NOT RUN" start="2026-02-07T14:06:54.058283" elapsed="0.000015"/>
+</kw>
+<doc>Test creating product without code field</doc>
+<status status="FAIL" start="2026-02-07T14:06:51.985638" elapsed="2.072757">500.0 != 400.0</status>
+</test>
+<test id="s1-s1-t8" name="API Error Handling 404" line="72">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:54.059027" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:54.058904" elapsed="0.000217"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:54.058768" elapsed="0.000395"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:54.059233" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:54.059602" level="FAIL">AttributeError: 'str' object has no attribute 'items'</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/products/99999</arg>
+<arg>expect_errors=true</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="FAIL" start="2026-02-07T14:06:54.059220" elapsed="0.011267">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2026-02-07T14:06:54.070601" elapsed="0.000014"/>
+</kw>
+<kw name="Close API Session">
+<doc>Close the API session</doc>
+<status status="NOT RUN" start="2026-02-07T14:06:54.070703" elapsed="0.000013"/>
+</kw>
+<doc>Test API returns 404 for non-existent resource</doc>
+<status status="FAIL" start="2026-02-07T14:06:54.058540" elapsed="0.012268">AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<test id="s1-s1-t9" name="API Response Format" line="79">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:54.071416" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:54.071289" elapsed="0.000220"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:54.071154" elapsed="0.000399"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:54.071622" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:56.125433" level="INFO">GET Request : url=http://localhost:8082/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-07T14:06:56.125492" level="INFO">GET Response : url=http://localhost:8082/products 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json', 'content-length': '158'} 
+ body=[{"id":8,"code":"VDFDF$#$%1515","name":"Lata","price":5.00,"quantity":100},{"id":9,"code":"ROBOT_TEST_001","name":"Test Product","price":99.99,"quantity":10}] 
+ </msg>
+<msg time="2026-02-07T14:06:56.125575" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/products</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-02-07T14:06:54.071609" elapsed="2.053988"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.126026" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.125716" elapsed="0.000351"/>
+</kw>
+<kw name="Convert To List" owner="Collections">
+<msg time="2026-02-07T14:06:56.126451" level="INFO">${response_json} = [{'id': 8, 'code': 'VDFDF$#$%1515', 'name': 'Lata', 'price': 5.0, 'quantity': 100}, {'id': 9, 'code': 'ROBOT_TEST_001', 'name': 'Test Product', 'price': 99.99, 'quantity': 10}]</msg>
+<var>${response_json}</var>
+<arg>${response.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``list`` type.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.126149" elapsed="0.000319"/>
+</kw>
+<kw name="Should Be A List">
+<msg time="2026-02-07T14:06:56.128199" level="FAIL">No keyword with name 'Should Be A List' found.</msg>
+<arg>${response_json}</arg>
+<status status="FAIL" start="2026-02-07T14:06:56.128175" elapsed="0.000054">No keyword with name 'Should Be A List' found.</status>
+</kw>
+<kw name="Close API Session">
+<doc>Close the API session</doc>
+<status status="NOT RUN" start="2026-02-07T14:06:56.128339" elapsed="0.000015"/>
+</kw>
+<doc>Test API response is valid JSON</doc>
+<status status="FAIL" start="2026-02-07T14:06:54.070942" elapsed="2.057500">No keyword with name 'Should Be A List' found.</status>
+</test>
+<test id="s1-s1-t10" name="API Timeout Handling" line="88">
+<kw name="Create API Session">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:56.129068" level="INFO">Creating Session using : alias=api, url=http://localhost:8082, headers={},                     cookies={}, auth=None, timeout=5, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>timeout=${API_TIMEOUT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-07T14:06:56.128941" elapsed="0.000217"/>
+</kw>
+<doc>Create HTTP session for API testing</doc>
+<status status="PASS" start="2026-02-07T14:06:56.128810" elapsed="0.000391"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-02-07T14:06:56.129270" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:56.129391" level="FAIL">Keyword 'RequestsLibrary.Get Request' got unexpected named argument 'expect_errors'.</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/products</arg>
+<arg>timeout=0.001</arg>
+<arg>expect_errors=true</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="FAIL" start="2026-02-07T14:06:56.129257" elapsed="0.000155">Keyword 'RequestsLibrary.Get Request' got unexpected named argument 'expect_errors'.</status>
+</kw>
+<kw name="Should Not Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are equal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2026-02-07T14:06:56.129482" elapsed="0.000012"/>
+</kw>
+<kw name="Close API Session">
+<doc>Close the API session</doc>
+<status status="NOT RUN" start="2026-02-07T14:06:56.129664" elapsed="0.000013"/>
+</kw>
+<doc>Test API request timeout behavior</doc>
+<status status="FAIL" start="2026-02-07T14:06:56.128597" elapsed="0.001158">Keyword 'RequestsLibrary.Get Request' got unexpected named argument 'expect_errors'.</status>
+</test>
+<status status="FAIL" start="2026-02-07T14:06:39.466549" elapsed="16.663483"/>
+</suite>
+<suite id="s1-s2" name="Test Api Simple" source="C:\Users\Public\Workspace\quest hands\tests\robot\test_api_simple.robot">
+<test id="s1-s2-t1" name="API Health Check" line="7">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.132098" level="INFO">Testing API health check endpoint at http://localhost:8082/q/health</msg>
+<arg>Testing API health check endpoint at http://localhost:8082/q/health</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.132035" elapsed="0.000092"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.132186" elapsed="0.000071"/>
+</kw>
+<doc>Verify that API is responding and healthy</doc>
+<status status="PASS" start="2026-02-07T14:06:56.131837" elapsed="0.000482"/>
+</test>
+<test id="s1-s2-t2" name="Get Products List" line="12">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.132648" level="INFO">Testing GET /products endpoint</msg>
+<arg>Testing GET /products endpoint</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.132592" elapsed="0.000081"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.132727" elapsed="0.000063"/>
+</kw>
+<doc>Test retrieving products list from API</doc>
+<status status="PASS" start="2026-02-07T14:06:56.132425" elapsed="0.000423"/>
+</test>
+<test id="s1-s2-t3" name="Get Raw Materials List" line="17">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.133162" level="INFO">Testing GET /raw-materials endpoint</msg>
+<arg>Testing GET /raw-materials endpoint</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.133115" elapsed="0.000070"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.133239" elapsed="0.000060"/>
+</kw>
+<doc>Test retrieving raw materials list from API</doc>
+<status status="PASS" start="2026-02-07T14:06:56.132955" elapsed="0.000399"/>
+</test>
+<test id="s1-s2-t4" name="Get Product Raw Materials Associations" line="22">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.133676" level="INFO">Testing GET /products-raw-materials endpoint</msg>
+<arg>Testing GET /products-raw-materials endpoint</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.133630" elapsed="0.000068"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.133749" elapsed="0.000059"/>
+</kw>
+<doc>Test retrieving product-raw material associations</doc>
+<status status="PASS" start="2026-02-07T14:06:56.133450" elapsed="0.000413"/>
+</test>
+<test id="s1-s2-t5" name="Get Production Suggestion" line="27">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.134162" level="INFO">Testing GET /production-suggestion endpoint</msg>
+<arg>Testing GET /production-suggestion endpoint</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.134118" elapsed="0.000066"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.134235" elapsed="0.000057"/>
+</kw>
+<doc>Test getting production suggestion calculations</doc>
+<status status="PASS" start="2026-02-07T14:06:56.133957" elapsed="0.000388"/>
+</test>
+<test id="s1-s2-t6" name="Create Product Success" line="32">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.134637" level="INFO">Testing POST /products with valid data</msg>
+<arg>Testing POST /products with valid data</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.134593" elapsed="0.000066"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.134709" elapsed="0.000057"/>
+</kw>
+<doc>Test creating a new product via API</doc>
+<status status="PASS" start="2026-02-07T14:06:56.134440" elapsed="0.000379"/>
+</test>
+<test id="s1-s2-t7" name="Create Product Without Code" line="37">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.135121" level="INFO">Testing validation of required code field</msg>
+<arg>Testing validation of required code field</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.135079" elapsed="0.000065"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.135192" elapsed="0.000057"/>
+</kw>
+<doc>Test creating product without required code field</doc>
+<status status="PASS" start="2026-02-07T14:06:56.134913" elapsed="0.000388"/>
+</test>
+<test id="s1-s2-t8" name="API Error Handling 404" line="42">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.135595" level="INFO">Testing 404 error handling for missing resources</msg>
+<arg>Testing 404 error handling for missing resources</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.135550" elapsed="0.000067"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.135666" elapsed="0.000057"/>
+</kw>
+<doc>Test API returns 404 for non-existent resource</doc>
+<status status="PASS" start="2026-02-07T14:06:56.135394" elapsed="0.000381"/>
+</test>
+<test id="s1-s2-t9" name="API Response Format" line="47">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.136059" level="INFO">Testing JSON response format validity</msg>
+<arg>Testing JSON response format validity</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.136018" elapsed="0.000062"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.136127" elapsed="0.000058"/>
+</kw>
+<doc>Test that API responses are valid JSON</doc>
+<status status="PASS" start="2026-02-07T14:06:56.135869" elapsed="0.000368"/>
+</test>
+<test id="s1-s2-t10" name="API Timeout Handling" line="52">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.136524" level="INFO">Testing timeout error handling and recovery</msg>
+<arg>Testing timeout error handling and recovery</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.136482" elapsed="0.000063"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.136646" elapsed="0.000064"/>
+</kw>
+<doc>Test API graceful handling of timeout scenarios</doc>
+<status status="PASS" start="2026-02-07T14:06:56.136329" elapsed="0.000440"/>
+</test>
+<doc>API Endpoint Testing Suite</doc>
+<status status="PASS" start="2026-02-07T14:06:56.130311" elapsed="0.006612"/>
+</suite>
+<suite id="s1-s3" name="Test Login" source="C:\Users\Public\Workspace\quest hands\tests\robot\test_login.robot">
+<test id="s1-s3-t1" name="Login With Valid Credentials" line="7">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.138704" level="INFO">Testing login with valid credentials: John Doe / john@example.com</msg>
+<arg>Testing login with valid credentials: John Doe / john@example.com</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.138652" elapsed="0.000078"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.138785" elapsed="0.000064"/>
+</kw>
+<doc>Test successful login with valid credentials</doc>
+<status status="PASS" start="2026-02-07T14:06:56.138460" elapsed="0.000448"/>
+</test>
+<test id="s1-s3-t2" name="Login With Missing Name" line="12">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.139214" level="INFO">Testing login validation for missing name field</msg>
+<arg>Testing login validation for missing name field</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.139168" elapsed="0.000069"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.139287" elapsed="0.000060"/>
+</kw>
+<doc>Test login fails when name is missing</doc>
+<status status="PASS" start="2026-02-07T14:06:56.139010" elapsed="0.000392"/>
+</test>
+<test id="s1-s3-t3" name="Login With Missing Email" line="17">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.139748" level="INFO">Testing login validation for missing email field</msg>
+<arg>Testing login validation for missing email field</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.139691" elapsed="0.000088"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.139840" elapsed="0.000068"/>
+</kw>
+<doc>Test login fails when email is missing</doc>
+<status status="PASS" start="2026-02-07T14:06:56.139498" elapsed="0.000472"/>
+</test>
+<test id="s1-s3-t4" name="Login With Missing Password" line="22">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.140292" level="INFO">Testing login validation for missing password field</msg>
+<arg>Testing login validation for missing password field</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.140245" elapsed="0.000071"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.140368" elapsed="0.000060"/>
+</kw>
+<doc>Test login fails when password is missing</doc>
+<status status="PASS" start="2026-02-07T14:06:56.140075" elapsed="0.000410"/>
+</test>
+<test id="s1-s3-t5" name="Password Show Hide Toggle" line="27">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.140802" level="INFO">Testing password visibility toggle functionality</msg>
+<arg>Testing password visibility toggle functionality</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.140756" elapsed="0.000069"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.140877" elapsed="0.000061"/>
+</kw>
+<doc>Test password visibility toggle in login form</doc>
+<status status="PASS" start="2026-02-07T14:06:56.140589" elapsed="0.000403"/>
+</test>
+<test id="s1-s3-t6" name="Login Page Layout" line="32">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.141283" level="INFO">Verifying login page contains all required elements</msg>
+<arg>Verifying login page contains all required elements</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.141240" elapsed="0.000067"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.141357" elapsed="0.000058"/>
+</kw>
+<doc>Verify login page has all required elements</doc>
+<status status="PASS" start="2026-02-07T14:06:56.141088" elapsed="0.000380"/>
+</test>
+<doc>Login Flow Test Suite</doc>
+<status status="PASS" start="2026-02-07T14:06:56.137181" elapsed="0.004429"/>
+</suite>
+<suite id="s1-s4" name="Test Password Recovery" source="C:\Users\Public\Workspace\quest hands\tests\robot\test_password_recovery.robot">
+<test id="s1-s4-t1" name="Access Password Recovery From Login" line="7">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.143281" level="INFO">Testing navigation to password recovery page</msg>
+<arg>Testing navigation to password recovery page</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.143228" elapsed="0.000080"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.143364" elapsed="0.000064"/>
+</kw>
+<doc>Test accessing password recovery from login page</doc>
+<status status="PASS" start="2026-02-07T14:06:56.143028" elapsed="0.000460"/>
+</test>
+<test id="s1-s4-t2" name="Password Recovery With Valid Email" line="12">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.143869" level="INFO">Testing password recovery with valid email address</msg>
+<arg>Testing password recovery with valid email address</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.143821" elapsed="0.000071"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.143947" elapsed="0.000063"/>
+</kw>
+<doc>Test password recovery with valid email</doc>
+<status status="PASS" start="2026-02-07T14:06:56.143642" elapsed="0.000425"/>
+</test>
+<test id="s1-s4-t3" name="Password Recovery Form Validation" line="17">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.144386" level="INFO">Verifying all password recovery form elements</msg>
+<arg>Verifying all password recovery form elements</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.144341" elapsed="0.000067"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.144458" elapsed="0.000087"/>
+</kw>
+<doc>Verify password recovery form has all required elements</doc>
+<status status="PASS" start="2026-02-07T14:06:56.144165" elapsed="0.000447"/>
+</test>
+<test id="s1-s4-t4" name="Password Recovery Empty Email" line="22">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.145015" level="INFO">Testing email field validation requirement</msg>
+<arg>Testing email field validation requirement</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.144967" elapsed="0.000072"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.145092" elapsed="0.000059"/>
+</kw>
+<doc>Test password recovery with empty email field</doc>
+<status status="PASS" start="2026-02-07T14:06:56.144789" elapsed="0.000418"/>
+</test>
+<test id="s1-s4-t5" name="Password Recovery Page Layout" line="27">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.145518" level="INFO">Verifying password recovery page structure and layout</msg>
+<arg>Verifying password recovery page structure and layout</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.145474" elapsed="0.000069"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.145601" elapsed="0.000060"/>
+</kw>
+<doc>Verify password recovery page layout and structure</doc>
+<status status="PASS" start="2026-02-07T14:06:56.145306" elapsed="0.000410"/>
+</test>
+<test id="s1-s4-t6" name="Back To Login Navigation" line="32">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.146020" level="INFO">Testing back to login navigation</msg>
+<arg>Testing back to login navigation</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.145977" elapsed="0.000065"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.146091" elapsed="0.000065"/>
+</kw>
+<doc>Test navigating back to login from password recovery</doc>
+<status status="PASS" start="2026-02-07T14:06:56.145814" elapsed="0.000398"/>
+</test>
+<doc>Password Recovery Test Suite</doc>
+<status status="PASS" start="2026-02-07T14:06:56.141839" elapsed="0.004505"/>
+</suite>
+<suite id="s1-s5" name="Test Signup" source="C:\Users\Public\Workspace\quest hands\tests\robot\test_signup.robot">
+<test id="s1-s5-t1" name="Signup With Valid Data" line="7">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.148193" level="INFO">Testing signup with valid data: Jane Smith / jane@example.com</msg>
+<arg>Testing signup with valid data: Jane Smith / jane@example.com</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.148139" elapsed="0.000080"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.148275" elapsed="0.000394"/>
+</kw>
+<doc>Test successful signup flow</doc>
+<status status="PASS" start="2026-02-07T14:06:56.147846" elapsed="0.000889"/>
+</test>
+<test id="s1-s5-t2" name="Signup With Mismatched Passwords" line="12">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.149065" level="INFO">Testing password mismatch validation</msg>
+<arg>Testing password mismatch validation</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.149016" elapsed="0.000072"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.149140" elapsed="0.000061"/>
+</kw>
+<doc>Test signup fails with mismatched passwords</doc>
+<status status="PASS" start="2026-02-07T14:06:56.148841" elapsed="0.000416"/>
+</test>
+<test id="s1-s5-t3" name="Signup With Short Password" line="17">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.149568" level="INFO">Testing minimum password length validation (6 characters)</msg>
+<arg>Testing minimum password length validation (6 characters)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.149523" elapsed="0.000075"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.149649" elapsed="0.000060"/>
+</kw>
+<doc>Test signup fails with password less than 6 characters</doc>
+<status status="PASS" start="2026-02-07T14:06:56.149353" elapsed="0.000412"/>
+</test>
+<test id="s1-s5-t4" name="Signup Without Accepting Terms" line="22">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.150069" level="INFO">Testing terms acceptance requirement</msg>
+<arg>Testing terms acceptance requirement</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.150025" elapsed="0.000066"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.150140" elapsed="0.000057"/>
+</kw>
+<doc>Test signup fails without accepting terms</doc>
+<status status="PASS" start="2026-02-07T14:06:56.149864" elapsed="0.000387"/>
+</test>
+<test id="s1-s5-t5" name="Signup Form Validation" line="27">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.150562" level="INFO">Verifying all signup form fields are present</msg>
+<arg>Verifying all signup form fields are present</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.150514" elapsed="0.000078"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.150644" elapsed="0.000060"/>
+</kw>
+<doc>Verify all signup form fields are present</doc>
+<status status="PASS" start="2026-02-07T14:06:56.150345" elapsed="0.000413"/>
+</test>
+<test id="s1-s5-t6" name="Email Verification Code Input" line="32">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-07T14:06:56.151057" level="INFO">Testing email verification code input (6-digit format)</msg>
+<arg>Testing email verification code input (6-digit format)</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.151013" elapsed="0.000066"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>pass</arg>
+<arg>pass</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-07T14:06:56.151128" elapsed="0.000057"/>
+</kw>
+<doc>Test email verification code input field</doc>
+<status status="PASS" start="2026-02-07T14:06:56.150853" elapsed="0.000386"/>
+</test>
+<doc>User Registration (Sign-up) Test Suite</doc>
+<status status="PASS" start="2026-02-07T14:06:56.146591" elapsed="0.004779"/>
+</suite>
+<status status="FAIL" start="2026-02-07T14:06:39.445837" elapsed="16.705861"/>
+</suite>
+<statistics>
+<total>
+<stat pass="33" fail="5" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="33" fail="5" skip="0" id="s1" name="Robot">Robot</stat>
+<stat pass="5" fail="5" skip="0" id="s1-s1" name="Test Api">Robot.Test Api</stat>
+<stat pass="10" fail="0" skip="0" id="s1-s2" name="Test Api Simple">Robot.Test Api Simple</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s3" name="Test Login">Robot.Test Login</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s4" name="Test Password Recovery">Robot.Test Password Recovery</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s5" name="Test Signup">Robot.Test Signup</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-02-07T14:06:39.541727" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:41.617786" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:43.667725" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:45.743910" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:47.801760" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:49.873719" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-02-07T14:06:51.986529" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-02-07T14:06:54.059233" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:54.071622" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-02-07T14:06:56.129270" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
