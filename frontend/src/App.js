@@ -48,18 +48,19 @@ function App() {
         borderRadius: '12px',
         padding: '1rem 1.5rem',
         marginBottom: '1.5rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto',
         gap: '2rem',
+        alignItems: 'center',
         backdropFilter: 'blur(10px)'
       }}>
-        <div style={{ flex: '1 1 auto', minWidth: '0' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
           <h1 className="main-title devui-title" style={{ 
-            marginBottom: '0.25rem',
+            marginBottom: 0,
             fontSize: '1.25rem',
             lineHeight: '1.2',
-            fontWeight: 700
+            fontWeight: 700,
+            color: '#d0b4fe'
           }}>Gerenciamento de Inventário</h1>
           <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: 0, lineHeight: '1.2' }}>Sistema de Controle de Produtos e Matérias-primas</p>
         </div>
@@ -68,7 +69,8 @@ function App() {
           display: 'flex',
           alignItems: 'center',
           gap: '1.25rem',
-          flexShrink: 0
+          flexShrink: 0,
+          justifySelf: 'end'
         }}>
           <div style={{
             display: 'flex',
@@ -113,8 +115,7 @@ function App() {
               fontWeight: 600,
               transition: 'all 0.3s ease',
               boxShadow: '0 2px 8px rgba(239, 68, 68, 0.2)',
-              flexShrink: 0,
-              height: 'fit-content'
+              flexShrink: 0
             }}
             onMouseOver={(e) => e.target.style.background = '#dc2626'}
             onMouseOut={(e) => e.target.style.background = '#ef4444'}
