@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function LoginPage() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
   
   // Login state
   const [loginForm, setLoginForm] = useState({ name: '', email: '', password: '' });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   
   // Signup state
@@ -55,7 +55,8 @@ function LoginPage() {
           avatar: getInitials(loginForm.name)
         }
       });
-      setIsLoggedIn(true);
+      // Form cleared after successful login
+      setLoginForm({ name: '', email: '', password: '' });
     }
   }
 
@@ -102,7 +103,17 @@ function LoginPage() {
           avatar: getInitials(signupForm.name)
         }
       });
-      setIsLoggedIn(true);
+      // Reset signup form after successful registration
+      setSignupForm({ 
+        name: '', 
+        email: '', 
+        password: '', 
+        confirmPassword: '',
+        agreeTerms: false 
+      });
+      setShowVerification(false);
+      setVerificationInput('');
+      setSignupMessage('');
     } else {
       setSignupMessage('Código de verificação inválido. Tente novamente.');
     }
@@ -125,7 +136,6 @@ function LoginPage() {
   function handleLogout() {
     dispatch({ type: 'CLEAR_USER' });
     setLoginForm({ name: '', email: '', password: '' });
-    setIsLoggedIn(false);
     setActiveTab('login');
   }
 
@@ -133,7 +143,7 @@ function LoginPage() {
     return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
   }
 
-  if (isLoggedIn) {
+  if (user) {
     return (
       <div style={{
         padding: '1.5rem',
@@ -160,12 +170,12 @@ function LoginPage() {
             fontSize: '1.1rem',
             boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)'
           }}>
-            {loginForm.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
+            {getInitials(user.name)}
           </div>
           <div>
             <p style={{ color: '#a78bfa', fontSize: '0.85rem', margin: '0 0 0.3rem 0', fontWeight: 500 }}>Usuário Logado</p>
-            <p style={{ color: '#f3f4f6', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>{loginForm.name}</p>
-            <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: '0.25rem 0 0 0' }}>{loginForm.email}</p>
+            <p style={{ color: '#f3f4f6', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>{user.name}</p>
+            <p style={{ color: '#9ca3af', fontSize: '0.8rem', margin: '0.25rem 0 0 0' }}>{user.email}</p>
           </div>
         </div>
         <button
