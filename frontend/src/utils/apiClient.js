@@ -33,7 +33,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     if (ENABLE_LOGGING) {
-      console.log(`📤 [API] ${config.method?.toUpperCase()} ${config.url}`);
+      console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`);
     }
     return config;
   },
@@ -50,7 +50,7 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => {
     if (ENABLE_LOGGING) {
-      console.log(`📥 [API] ${response.status} ${response.config.url}`);
+      console.log(`[API Response] ${response.status} ${response.config.url}`);
     }
     return response;
   },
@@ -58,11 +58,11 @@ apiClient.interceptors.response.use(
     // Erro de rede (sem resposta)
     if (!error.response) {
       if (error.code === 'ECONNABORTED') {
-        showError('⏱️ Request timeout - Server took too long to respond');
+        showError('[Timeout] Request timeout - Server took too long to respond');
       } else if (error.code === 'ERR_NETWORK') {
-        showError('🔌 Network error - Check your connection');
+        showError('[Network Error] Network error - Check your connection');
       } else {
-        showError('❌ Connection error - Unable to reach server');
+        showError('[Connection Error] Connection error - Unable to reach server');
       }
       console.error('Network error:', error.message);
       return Promise.reject(error);
@@ -74,30 +74,30 @@ apiClient.interceptors.response.use(
 
     // 400 - Bad Request (validação)
     if (status === 400) {
-      showError(`❌ Input Error: ${message}`);
+      showError(`[Validation Error] Input Error: ${message}`);
     }
     // 401 - Unauthorized
     else if (status === 401) {
-      showError('🔐 Unauthorized - Please login again');
+      showError('[Unauthorized] Unauthorized - Please login again');
       // Limpar localStorage e redirecionar para login
       localStorage.removeItem('user');
       window.location.href = '/';
     }
     // 403 - Forbidden
     else if (status === 403) {
-      showError('🚫 Access Denied - You do not have permission');
+      showError('[Access Denied] Access Denied - You do not have permission');
     }
     // 404 - Not Found
     else if (status === 404) {
-      showWarning('⚠️ Resource not found');
+      showWarning('[Not Found] Resource not found');
     }
     // 409 - Conflict
     else if (status === 409) {
-      showError(`⚠️ Conflict: ${message}`);
+      showError(`[Conflict] Conflict: ${message}`);
     }
     // 500 - Server Error
     else if (status >= 500) {
-      showError('💥 Server error - Please try again later');
+      showError('[Server Error] Server error - Please try again later');
     }
     // Outros erros
     else {
@@ -105,7 +105,7 @@ apiClient.interceptors.response.use(
     }
 
     if (ENABLE_LOGGING) {
-      console.error(`❌ [API] ${status} - ${message}`);
+      console.error(`[API Error] ${status} - ${message}`);
     }
 
     return Promise.reject(error);

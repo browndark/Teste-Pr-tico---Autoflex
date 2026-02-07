@@ -1,0 +1,58 @@
+# Robot Framework Configuration
+
+[ROBOT]
+## Robot Framework Configuration for Quest Hands Inventory System
+
+### Test Organisation
+Tests are organized into the following modules:
+- test_login.robot: Login flow tests
+- test_signup.robot: User registration flow tests
+- test_password_recovery.robot: Password reset functionality tests
+- test_api.robot: API endpoint validation tests
+- keywords/common.robot: Shared keywords and common operations
+
+### Execution Commands
+
+# Run all tests
+robot --outputdir=results tests/robot/
+
+# Run specific test suite
+robot tests/robot/test_login.robot
+
+# Run with specific browser tag
+robot --variable BROWSER:firefox tests/robot/
+
+# Run tests in parallel (requires robotframework-pabot)
+pabot --processes 4 tests/robot/
+
+# Generate reports
+robot --outputdir=results --report report.html --log log.html tests/robot/
+
+# Run tests with custom variables
+robot --variable BASE_URL:http://localhost:3000 tests/robot/
+
+### Requirements
+- Python 3.7+
+- robotframework >= 5.0
+- robotframework-seleniumlibrary >= 6.0
+- robotframework-requests >= 0.9.0
+- selenium >= 4.0
+
+### Installation
+pip install robotframework robotframework-seleniumlibrary robotframework-requests
+
+### Browser Setup
+Supports:
+- Chrome (default)
+- Firefox
+- Edge
+- Safari
+
+For headless testing, add:
+--variable HEADLESS:true
+
+### Report Generation
+After running tests, reports are generated in results/ directory:
+- report.html: Test execution summary
+- log.html: Detailed test logs
+- output.xml: Machine-readable results
