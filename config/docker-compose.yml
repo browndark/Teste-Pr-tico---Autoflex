@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:14-alpine
+    container_name: estoque-db
+    environment:
+      POSTGRES_DB: estoque
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - estoque-network
+
+  # Quarkus Backend API
+  backend:
+    image: openjdk:11-jre-slim
+    container_name: estoque-api
+    working_dir: /app
+    volumes:
+      - ./backend/target/controle-estoque-1.0.0-runner.jar:/app/api.jar
+    command: java -jar /app/api.jar
+    environment:
+      QUARKUS_DATASOURCE_DB_KIND: postgresql
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/estoque
+      QUARKUS_DATASOURCE_USERNAME: postgres
+      QUARKUS_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8082:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - estoque-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/q/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # React Frontend
+  frontend:
+    image: node:16-alpine
+    container_name: estoque-web
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    environment:
+      REACT_APP_API_URL: http://localhost:8082
+      REACT_APP_ENV: production
+    command: sh -c "npm install && npm run build && npm install -g serve && serve -s build -l 3001"
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+    networks:
+      - estoque-network
+
+networks:
+  estoque-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

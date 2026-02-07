@@ -1,0 +1,60 @@
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.m2/
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+.gradletasknamecache
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+.vscode-server
+
+# Application
+*.log
+*.pid
+run.pid
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+postgres_data/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Build outputs
+*.war
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
