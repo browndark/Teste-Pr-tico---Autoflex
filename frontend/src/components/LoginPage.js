@@ -517,6 +517,7 @@ function LoginPage() {
                     value={signupForm.name}
                     onChange={handleSignupChange}
                     placeholder="Your full name"
+                    autoComplete="name"
                     required
                     style={{
                       width: '100%',
@@ -550,6 +551,7 @@ function LoginPage() {
                     value={signupForm.email}
                     onChange={handleSignupChange}
                     placeholder="your.email@company.com"
+                    autoComplete="email"
                     required
                     style={{
                       width: '100%',
@@ -806,6 +808,7 @@ function LoginPage() {
                       placeholder="000000"
                       maxLength="6"
                       inputMode="numeric"
+                      autoComplete="one-time-code"
                       required
                       style={{
                         width: '100%',
