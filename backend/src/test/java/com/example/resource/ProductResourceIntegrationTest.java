@@ -3,8 +3,11 @@ package com.example.resource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 
 import java.math.BigDecimal;
 
@@ -20,6 +23,76 @@ import static org.hamcrest.Matchers.*;
 public class ProductResourceIntegrationTest {
 
     private static final String PRODUCTS_ENDPOINT = "/products";
+    private Long testProductId;
+    private Long updateProductId;
+
+    @BeforeEach
+    public void setUp() {
+        // Create test product for read operations
+        String testProductJson = """
+            {
+                "code": "TEST-PROD-001",
+                "name": "Test Product",
+                "price": 99.99,
+                "quantity": 10
+            }
+            """;
+        
+        Response response = given()
+            .contentType(ContentType.JSON)
+            .body(testProductJson)
+            .when()
+            .post(PRODUCTS_ENDPOINT);
+        
+        // Extract ID from response if available
+        try {
+            testProductId = response.jsonPath().getLong("id");
+        } catch (Exception e) {
+            testProductId = 1L; // Fallback
+        }
+
+        // Create product for update tests
+        String updateProductJson = """
+            {
+                "code": "UPDATE-PROD-002",
+                "name": "Product for Update",
+                "price": 150.00,
+                "quantity": 5
+            }
+            """;
+        
+        Response updateResponse = given()
+            .contentType(ContentType.JSON)
+            .body(updateProductJson)
+            .when()
+            .post(PRODUCTS_ENDPOINT);
+        
+        try {
+            updateProductId = updateResponse.jsonPath().getLong("id");
+        } catch (Exception e) {
+            updateProductId = 2L; // Fallback
+        }
+    }
+
+    @AfterEach
+    public void tearDown() {
+        // Clean up test data
+        try {
+            given()
+                .when()
+                .delete(PRODUCTS_ENDPOINT + "/{id}", testProductId)
+                .then()
+                .statusCode(anyOf(is(204), is(404)));
+                
+            given()
+                .when()
+                .delete(PRODUCTS_ENDPOINT + "/{id}", updateProductId)
+                .then()
+                .statusCode(anyOf(is(204), is(404)));
+        } catch (Exception e) {
+            // Ignore cleanup errors
+        }
+    }
 
     @Test
     @DisplayName("Should list all products")
@@ -95,10 +168,9 @@ public class ProductResourceIntegrationTest {
     @Test
     @DisplayName("Should update an existing product")
     public void testUpdateProduct() {
-        Long productId = 1L;
         String updateJson = """
             {
-                "code": "UPDATED-001",
+                "code": "UPDATED-PROD-002",
                 "name": "Updated Product",
                 "price": 149.99,
                 "quantity": 20
@@ -109,19 +181,17 @@ public class ProductResourceIntegrationTest {
             .contentType(ContentType.JSON)
             .body(updateJson)
             .when()
-            .put(PRODUCTS_ENDPOINT + "/{id}", productId)
+            .put(PRODUCTS_ENDPOINT + "/{id}", updateProductId)
             .then()
-            .statusCode(anyOf(is(200), is(404)));
+            .statusCode(anyOf(is(200), is(204)));
     }
 
     @Test
     @DisplayName("Should delete a product")
     public void testDeleteProduct() {
-        Long productId = 1L;
-
         given()
             .when()
-            .delete(PRODUCTS_ENDPOINT + "/{id}", productId)
+            .delete(PRODUCTS_ENDPOINT + "/{id}", testProductId)
             .then()
             .statusCode(anyOf(is(204), is(404)));
     }
