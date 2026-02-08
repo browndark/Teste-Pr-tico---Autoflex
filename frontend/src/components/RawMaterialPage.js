@@ -120,11 +120,6 @@ function RawMaterialPage() {
           <FiPlus size={20} /> Add
         </button>
       </form>
-        </div>
-        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
-          <FiPlus size={20} /> Add
-        </button>
-      </form>
       <div style={{ marginBottom: '1.5rem', position: 'relative' }}>
         <FiSearch style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#a78bfa', size: 20 }} />
         <input

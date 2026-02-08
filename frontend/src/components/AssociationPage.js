@@ -146,11 +146,6 @@ function AssociationPage() {
           <FiPlus size={20} /> Link
         </button>
       </form>
-        </div>
-        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
-          <FiPlus size={20} /> Link
-        </button>
-      </form>
       {stockWarning && (
         <div style={{ 
           padding: '1rem 1.25rem', 
