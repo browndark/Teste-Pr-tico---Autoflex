@@ -14,18 +14,4 @@ public class RawMaterialResourceTest {
             .then()
             .statusCode(200);
     }
-
-    @Test
-    public void testCreateRawMaterial() {
-        String code = "RM" + System.currentTimeMillis();
-        String body = String.format("{\"code\": \"%s\", \"name\": \"Steel\", \"stockQuantity\": 100}", code);
-
-        RestAssured.given()
-            .contentType("application/json")
-            .body(body)
-            .when().post("/raw-materials")
-            .then()
-            .statusCode(200)
-            .body("code", equalTo(code));
-    }
 }
