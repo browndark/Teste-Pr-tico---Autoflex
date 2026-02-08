@@ -12,8 +12,8 @@
 
 ```bash
 # Clone and setup
-git clone https://github.com/browndark/Teste-Prático---Autoflex.git
-cd "Teste-Prático---Autoflex"
+git clone https://github.com/browndark/Teste-Pr-tico---Autoflex.git
+cd "Teste-Pr-tico---Autoflex"
 docker compose up
 ```
 
@@ -579,7 +579,7 @@ This project is provided as a test/evaluation deliverable.
 
 ## Next Steps
 
-1. **Clone the repo**: `git clone <https://github.com/browndark/Teste-Pr-tico---Autoflex.git>`
+1. **Clone the repo**: `git clone https://github.com/browndark/Teste-Pr-tico---Autoflex.git`
 2. **Run with Docker**: `docker compose up`
 3. **Explore the app**: Open http://localhost:3001
 4. **Read the docs**: Start with [ARCHITECTURE.md](docs/ARCHITECTURE.md)
