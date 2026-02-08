@@ -11,7 +11,7 @@ public class ProductResourceTest {
     @Test
     public void testListProducts() {
         RestAssured.given()
-            .when().get("/produtos")
+            .when().get("/products")
             .then()
             .statusCode(anyOf(is(200), is(404)));
     }
@@ -20,7 +20,7 @@ public class ProductResourceTest {
     public void testProductEndpoint() {
         RestAssured.given()
             .when()
-            .get("/produtos")
+            .get("/products")
             .then()
             .log().all();
     }

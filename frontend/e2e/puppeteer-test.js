@@ -62,9 +62,9 @@ const path = require('path');
     await page.screenshot({ path: screenshotPath, fullPage: true });
     console.log('Screenshot saved to', screenshotPath);
 
-    // fetch materias-primas list via backend API to confirm
-    const res = await page.evaluate(() => fetch('http://localhost:8082/materias-primas').then(r => r.json()));
-    console.log('Materias-primas count after add:', res.length);
+    // fetch raw materials list via backend API to confirm
+    const res = await page.evaluate(() => fetch('http://localhost:8082/raw-materials').then(r => r.json()));
+    console.log('Raw materials count after add:', res.length);
 
     await browser.close();
     process.exit(0);

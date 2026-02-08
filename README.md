@@ -38,7 +38,7 @@ docker compose up
 - Product catalog with pricing & stock tracking
 - Raw material management & associations
 - Production suggestion algorithm (Greedy-based)
-- Automatic cost optimization
+- Value-based production optimization
 
 ** Professional Stack**
 - Quarkus (Java 11+) with native compilation support
@@ -212,17 +212,17 @@ robot tests/robot/
 
 ## Algorithm: Production Suggestion
 
-**Problem:** Minimize production cost while satisfying stock demand.
+**Problem:** Maximize total production value based on available raw materials.
 
-**Approach:** Greedy algorithm with validation.
+**Approach:** Greedy algorithm prioritizing high-value products.
 
 ```
-1. Calculate required raw materials (quantity-based)
-2. Verify sufficient stock for each raw material
-3. Sort by cost efficiency (cost per unit produced)
-4. Allocate resources greedily
-5. Update inventory after production
-6. Return production plan with cost breakdown
+1. Sort products by price/value (descending - highest value first)
+2. For each product, calculate maximum producible quantity based on available raw materials
+3. Allocate resources to the product if sufficient stock exists
+4. Deduct consumed raw materials from stock
+5. Continue with next highest-value product
+6. Return production plan with total value
 ```
 
 **Time Complexity:** O(n log n) - sorting products
@@ -256,29 +256,29 @@ http://localhost:8082/api
 
 **List Products**
 ```http
-GET /produtos
+GET /products
 Content-Type: application/json
 
 Response: 200 OK
 [{
   "id": 1,
   "code": "PROD-001",
-  "description": "Product Name",
+  "name": "Product Name",
   "price": 99.99,
-  "stock": 50
+  "quantity": 50
 }]
 ```
 
 **Create Product**
 ```http
-POST /produtos
+POST /products
 Content-Type: application/json
 
 {
   "code": "PROD-002",
-  "description": "New Product",
+  "name": "New Product",
   "price": 149.99,
-  "stock": 30
+  "quantity": 30
 }
 
 Response: 201 Created
@@ -286,18 +286,23 @@ Response: 201 Created
 
 **Get Production Suggestion**
 ```http
-POST /producoes/sugerir
+GET /production-suggestion
 Content-Type: application/json
-
-{
-  "products": [1, 2, 3]
-}
 
 Response: 200 OK
 {
-  "suggested_quantity": 10,
-  "total_cost": 5000.00,
-  "production_plan": [...]
+  "products": [
+    {
+      "product": {
+        "id": 1,
+        "code": "PROD-001",
+        "name": "Product Name",
+        "price": 99.99
+      },
+      "quantity": 10
+    }
+  ],
+  "totalValue": 999.90
 }
 ```
 
@@ -414,7 +419,7 @@ Example:
 ```
 feat: Add production suggestion API
 
-- Implement greedy algorithm for cost optimization
+- Implement greedy algorithm for production value maximization
 - Add input validation
 - Include comprehensive unit tests
 
@@ -438,7 +443,7 @@ This project is provided as a test/evaluation deliverable.
 3. **CI/CD Ready** - 5 GitHub Actions workflows with automated testing & deployment
 4. **Professional Documentation** - 12+ documentation files covering all aspects
 5. **Security First** - Input validation, SQL injection prevention, vulnerability scanning
-6. **Performance Optimized** - Greedyalgorithm with O(n log n) complexity
+6. **Performance Optimized** - Greedy algorithm for value maximization with O(n log n) complexity
 7. **Cloud Ready** - Docker images, health checks, environment configuration
 8. **Developer Experience** - Scripts for setup, documentation, clear code structure
 

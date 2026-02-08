@@ -61,7 +61,7 @@ function ProductionSuggestionPage() {
         </div>
       </div>
       {loading ? (
-        <p style={{ textAlign: 'center', color: '#d1d5db', marginTop: '2rem', fontSize: '1.1rem' }}>📊 Loading suggestion...</p>
+        <p style={{ textAlign: 'center', color: '#d1d5db', marginTop: '2rem', fontSize: '1.1rem' }}>Loading suggestion...</p>
       ) : (
         <>
           <ul>
@@ -83,7 +83,7 @@ function ProductionSuggestionPage() {
               })
             ) : (
               <p style={{ textAlign: 'center', color: '#d1d5db', marginTop: '2rem', fontSize: '1rem' }}>
-                ⚠️ No production can be suggested with current inventory
+                No production can be suggested with current inventory
               </p>
             )}
           </ul>

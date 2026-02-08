@@ -3,31 +3,31 @@ const fetch = require('node-fetch');
 (async ()=>{
   const base = 'http://127.0.0.1:8082';
   try{
-    // create materia-prima
-    const mpCode = 'MP_API_' + Date.now();
-    let res = await fetch(base + '/materias-primas', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({codigo: mpCode, nome:'MP API Test', quantidadeEstoque: 50})});
-    console.log('POST /materias-primas status', res.status);
+    // create raw material
+    const mpCode = 'RM_API_' + Date.now();
+    let res = await fetch(base + '/raw-materials', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({code: mpCode, name:'Raw Material API Test', stockQuantity: 50})});
+    console.log('POST /raw-materials status', res.status);
     const mp = await res.json();
-    console.log('Created materia-prima id', mp.id, 'codigo', mp.codigo);
+    console.log('Created raw material id', mp.id, 'code', mp.code);
 
     // create product
     const pCode = 'P_API_' + Date.now();
-    res = await fetch(base + '/produtos', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({codigo: pCode, nome:'Produto API', valor: 12.34})});
-    console.log('POST /produtos status', res.status);
+    res = await fetch(base + '/products', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({code: pCode, name:'Product API', price: 12.34, quantity: 0})});
+    console.log('POST /products status', res.status);
     const p = await res.json();
-    console.log('Created produto id', p.id, 'codigo', p.codigo);
+    console.log('Created product id', p.id, 'code', p.code);
 
     // create association
-    const assoc = { produto: { id: p.id }, materiaPrima: { id: mp.id }, quantidadeNecessaria: 2 };
-    res = await fetch(base + '/produtos-materias-primas', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(assoc)});
-    console.log('POST /produtos-materias-primas status', res.status);
+    const assoc = { product: { id: p.id }, rawMaterial: { id: mp.id }, requiredQuantity: 2 };
+    res = await fetch(base + '/products-raw-materials', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(assoc)});
+    console.log('POST /products-raw-materials status', res.status);
     const a = await res.json();
     console.log('Created association id', a.id);
 
     // lists
-    res = await fetch(base + '/materias-primas'); console.log('GET /materias-primas status', res.status); console.log(await res.json());
-    res = await fetch(base + '/produtos'); console.log('GET /produtos status', res.status); console.log(await res.json());
-    res = await fetch(base + '/produtos-materias-primas'); console.log('GET /produtos-materias-primas status', res.status); console.log(await res.json());
+    res = await fetch(base + '/raw-materials'); console.log('GET /raw-materials status', res.status); console.log(await res.json());
+    res = await fetch(base + '/products'); console.log('GET /products status', res.status); console.log(await res.json());
+    res = await fetch(base + '/products-raw-materials'); console.log('GET /products-raw-materials status', res.status); console.log(await res.json());
 
     process.exit(0);
   }catch(e){ console.error(e); process.exit(1);} 

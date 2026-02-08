@@ -55,10 +55,10 @@ Your Quest Hands project **EXCEEDS ALL REQUIREMENTS** specified in the Autoflex 
 
 | Operation | Status | Location | Evidence |
 |-----------|--------|----------|----------|
-| CREATE | [COMPLETE] | RawMaterialResource.java | POST /materias-primas endpoint |
-| READ | [COMPLETE] | RawMaterialResource.java | GET /materias-primas |
-| UPDATE | [COMPLETE] | RawMaterialResource.java | PUT /materias-primas/{id} |
-| DELETE | [COMPLETE] | RawMaterialResource.java | DELETE /materias-primas/{id} |
+| CREATE | [COMPLETE] | RawMaterialResource.java | POST /raw-materials endpoint |
+| READ | [COMPLETE] | RawMaterialResource.java | GET /raw-materials |
+| UPDATE | [COMPLETE] | RawMaterialResource.java | PUT /raw-materials/{id} |
+| DELETE | [COMPLETE] | RawMaterialResource.java | DELETE /raw-materials/{id} |
 | Database | [COMPLETE] | PostgreSQL migration | raw_material table with stock_qty |
 
 **Frontend Interface:** RawMaterialPage.js (React) - Full CRUD UI  
@@ -103,7 +103,7 @@ Your Quest Hands project **EXCEEDS ALL REQUIREMENTS** specified in the Autoflex 
 | Aspect | Status | Location | Details |
 |--------|--------|----------|---------|
 | Algorithm | [COMPLETE] | ProductionSuggestionResource.java | Greedy algorithm by price (DESC) |
-| API Endpoint | [COMPLETE] | /producao-sugerida | GET endpoint |
+| API Endpoint | [COMPLETE] | /production-suggestion | GET endpoint |
 | Logic | [COMPLETE] | Code | For each product (sorted by price): |
 | | | | 1. Calculate max producible qty (by bottleneck RM) |
 | | | | 2. Deduct required materials from stock |
@@ -399,7 +399,7 @@ product_raw_material (id PK, product_id FK, raw_material_id FK, required_qty > 0
 | Database Tables | [COMPLETE] | product, raw_material, product_raw_material |
 | DB Columns | [COMPLETE] | id, code, name, price, stock_quantity, required_quantity |
 | UI Text | [COMPLETE] | All labels, placeholders, messages in English |
-| API Endpoints | [COMPLETE] | /products, /materias-primas (pt), suggestion endpoint |
+| API Endpoints | [COMPLETE] | /products, /raw-materials, /products-raw-materials, /production-suggestion |
 | Comments | [COMPLETE] | Code comments in English |
 | Variables | [COMPLETE] | All variable names in English (camelCase) |
 

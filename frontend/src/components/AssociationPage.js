@@ -42,7 +42,7 @@ function AssociationPage() {
       const rawMaterial = rawMaterials.find(rm => rm.id === parseInt(newForm.rawMaterialId));
       const requiredQty = parseInt(newForm.requiredQuantity);
       if (rawMaterial && requiredQty > rawMaterial.stockQuantity) {
-        setStockWarning(`⚠️ Insufficient stock! Need ${requiredQty}, have only ${rawMaterial.stockQuantity}`);
+        setStockWarning(`Insufficient stock! Need ${requiredQty}, have only ${rawMaterial.stockQuantity}`);
       } else {
         setStockWarning('');
       }
