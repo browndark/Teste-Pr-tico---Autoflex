@@ -59,6 +59,6 @@ echo    Option 2: Docker (requires Docker Desktop)
 echo    PS^> docker-compose up -d
 echo.
 echo  Access the application:
-echo    Frontend: http://localhost:3001
+echo    Frontend: http://localhost:3000 (local development)
 echo    Backend:  http://localhost:8082
 echo.

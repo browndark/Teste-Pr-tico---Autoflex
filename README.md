@@ -18,7 +18,7 @@ docker compose up
 ```
 
 **Done!** Access the application:
-- **Frontend**: http://localhost:3001
+- **Frontend**: http://localhost:3000 (local dev) or http://localhost:3001 (Docker)
 - **Backend API**: http://localhost:8082
 - **Database**: PostgreSQL on localhost:5432
 
@@ -28,7 +28,7 @@ docker compose up
 
 | Component | Technology | Port | Purpose |
 |-----------|-----------|------|---------|
-| Frontend  | React 18 + Redux | 3001 | User Interface & State Management |
+| Frontend  | React 18 + Redux | 3000 (local) / 3001 (Docker) | User Interface & State Management |
 | Backend   | Quarkus 2.16.6 | 8082 | REST API & Business Logic |
 | Database  | PostgreSQL 14 | 5432 | Persistent Data Storage |
 
@@ -155,7 +155,7 @@ This starts all services automatically (more info in Deployment Options section 
 
 **Windows:**
 ```powershell
-netstat -an | Select-String "8082|3001|5432"
+netstat -an | Select-String "8082|3000|5432"
 ```
 
 **Mac/Linux:**
@@ -447,7 +447,7 @@ mvn quarkus:dev
 ```bash
 cd frontend
 npm install
-npm start     # Starts on http://localhost:3001
+npm start     # Starts on http://localhost:3000 (automatic)
 npm test      # Run Jest tests
 ```
 
@@ -483,7 +483,7 @@ V002__add_new_table.sql
 ### Port Already in Use
 ```bash
 # Kill process on port
-lsof -i :3001    # Find process
+lsof -i :3000    # Find frontend process on macOS/Linux
 kill -9 <PID>    # Kill it
 
 # Or use different port
@@ -581,7 +581,7 @@ This project is provided as a test/evaluation deliverable.
 
 1. **Clone the repo**: `git clone https://github.com/browndark/Teste-Pr-tico---Autoflex.git`
 2. **Run with Docker**: `docker compose up`
-3. **Explore the app**: Open http://localhost:3001
+3. **Explore the app**: Open http://localhost:3000 (or http://localhost:3001 if using Docker)
 4. **Read the docs**: Start with [ARCHITECTURE.md](docs/ARCHITECTURE.md)
 5. **Run tests**: `npm test` (frontend) or `mvn test` (backend)
 

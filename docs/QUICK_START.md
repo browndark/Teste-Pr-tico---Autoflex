@@ -16,7 +16,7 @@ verify-setup.bat    # Windows
 cd backend && mvn quarkus:dev
 cd frontend && npm start
 
-# App available at http://localhost:3001
+# App available at http://localhost:3000 (local) or http://localhost:3001 (Docker)
 ```
 
 ### Option 2: Docker (All-in-One)
@@ -87,7 +87,7 @@ mvn quarkus:dev
 # Terminal 2: Frontend
 cd frontend
 npm start
-# Starts on http://localhost:3001
+# Starts on http://localhost:3000 (automatic, no configuration needed)
 # Hot reload enabled
 
 # Terminal 3: Database (if not Docker)
@@ -300,7 +300,7 @@ npm install
 - [ ] Run `mvn clean package` (backend)
 - [ ] Set production `.env` variables
 - [ ] Run `docker-compose up -d`
-- [ ] Verify on `http://localhost:3001`
+- [ ] Verify on `http://localhost:3000` (or http://localhost:3001 if using Docker)
 - [ ] Check database connection from backend logs
 - [ ] Test all CRUD operations
 - [ ] Run `npm run cypress:run` (all tests pass)
