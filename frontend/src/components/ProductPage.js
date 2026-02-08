@@ -104,25 +104,25 @@ function ProductPage() {
           {products.length} items
         </div>
       </div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', alignItems: 'flex-end' }}>
         <div>
           <label htmlFor="product-code" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Code</label>
-          <input id="product-code" name="code" value={form.code} onChange={handleChange} placeholder="e.g., PRD001" autoComplete="off" required />
+          <input id="product-code" name="code" value={form.code} onChange={handleChange} placeholder="e.g., PRD001" autoComplete="off" required style={{ width: '100%', padding: '0.75rem', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', background: '#2d2d2d', color: '#f3f4f6', fontSize: '0.9rem' }} />
         </div>
         <div>
           <label htmlFor="product-name" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Name</label>
-          <input id="product-name" name="name" value={form.name} onChange={handleChange} placeholder="Product name" autoComplete="off" required />
+          <input id="product-name" name="name" value={form.name} onChange={handleChange} placeholder="Product name" autoComplete="off" required style={{ width: '100%', padding: '0.75rem', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', background: '#2d2d2d', color: '#f3f4f6', fontSize: '0.9rem' }} />
         </div>
         <div>
-          <label htmlFor="product-price" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Unit Price ($)</label>
-          <input id="product-price" name="price" value={form.price} onChange={handleChange} placeholder="0.00" autoComplete="off" required type="number" step="0.01" />
+          <label htmlFor="product-price" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Price ($)</label>
+          <input id="product-price" name="price" value={form.price} onChange={handleChange} placeholder="0.00" autoComplete="off" required type="number" step="0.01" style={{ width: '100%', padding: '0.75rem', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', background: '#2d2d2d', color: '#f3f4f6', fontSize: '0.9rem' }} />
         </div>
         <div>
           <label htmlFor="product-quantity" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty</label>
-          <input id="product-quantity" name="quantity" value={form.quantity} onChange={handleChange} placeholder="0" autoComplete="off" type="number" />
+          <input id="product-quantity" name="quantity" value={form.quantity} onChange={handleChange} placeholder="0" autoComplete="off" type="number" style={{ width: '100%', padding: '0.75rem', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', background: '#2d2d2d', color: '#f3f4f6', fontSize: '0.9rem' }} />
         </div>
-        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
-          <FiPlus size={20} /> Add Product
+        <button type="submit" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)', border: 'none', borderRadius: '6px', color: 'white', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', fontSize: '0.9rem', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'} onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}>
+          <FiPlus size={20} /> Add
         </button>
       </form>
       <div style={{ marginBottom: '1.5rem', position: 'relative' }}>

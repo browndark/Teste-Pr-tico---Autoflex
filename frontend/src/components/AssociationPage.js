@@ -119,28 +119,33 @@ function AssociationPage() {
           {associations.length} links
         </div>
       </div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', alignItems: 'flex-end' }}>
         <div>
           <label htmlFor="assoc-product" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Product</label>
-          <select id="assoc-product" name="productId" value={form.productId} onChange={handleChange} required style={{ width: '100%' }}>
-            <option value="">Select a product...</option>
+          <select id="assoc-product" name="productId" value={form.productId} onChange={handleChange} required style={{ width: '100%', padding: '0.75rem', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', background: '#2d2d2d', color: '#f3f4f6', fontSize: '0.9rem' }}>
+            <option value="">Select product...</option>
             {products.map(p => (
               <option key={p.id} value={p.id}>{p.name} ({p.code})</option>
             ))}
           </select>
         </div>
         <div>
-          <label htmlFor="assoc-material" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Raw Material</label>
-          <select id="assoc-material" name="rawMaterialId" value={form.rawMaterialId} onChange={handleChange} required style={{ width: '100%' }}>
+          <label htmlFor="assoc-material" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Material</label>
+          <select id="assoc-material" name="rawMaterialId" value={form.rawMaterialId} onChange={handleChange} required style={{ width: '100%', padding: '0.75rem', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', background: '#2d2d2d', color: '#f3f4f6', fontSize: '0.9rem' }}>
             <option value="">Select material...</option>
             {rawMaterials.map(rm => (
-              <option key={rm.id} value={rm.id}>{rm.name} ({rm.code}) - Stock: {rm.stockQuantity}</option>
+              <option key={rm.id} value={rm.id}>{rm.name} ({rm.code})</option>
             ))}
           </select>
         </div>
         <div>
-          <label htmlFor="assoc-quantity" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty Required</label>
-          <input id="assoc-quantity" name="requiredQuantity" value={form.requiredQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" />
+          <label htmlFor="assoc-quantity" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty</label>
+          <input id="assoc-quantity" name="requiredQuantity" value={form.requiredQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" style={{ width: '100%', padding: '0.75rem', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', background: '#2d2d2d', color: '#f3f4f6', fontSize: '0.9rem' }} />
+        </div>
+        <button type="submit" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)', border: 'none', borderRadius: '6px', color: 'white', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', fontSize: '0.9rem', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'} onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}>
+          <FiPlus size={20} /> Link
+        </button>
+      </form>
         </div>
         <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
           <FiPlus size={20} /> Link
