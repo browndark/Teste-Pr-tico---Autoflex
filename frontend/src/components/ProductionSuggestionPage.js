@@ -169,12 +169,4 @@ function ProductionSuggestionPage() {
 }
 
 export default ProductionSuggestionPage;
-            </p>
-          </div>
-        </>
-      )}
-    </section>
-  );
-}
 
-export default ProductionSuggestionPage;

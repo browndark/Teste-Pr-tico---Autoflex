@@ -106,20 +106,20 @@ function ProductPage() {
       </div>
       <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Code</label>
-          <input name="code" value={form.code} onChange={handleChange} placeholder="e.g., PRD001" autoComplete="off" required />
+          <label htmlFor="product-code" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Code</label>
+          <input id="product-code" name="code" value={form.code} onChange={handleChange} placeholder="e.g., PRD001" autoComplete="off" required />
         </div>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Name</label>
-          <input name="name" value={form.name} onChange={handleChange} placeholder="Product name" autoComplete="off" required />
+          <label htmlFor="product-name" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Name</label>
+          <input id="product-name" name="name" value={form.name} onChange={handleChange} placeholder="Product name" autoComplete="off" required />
         </div>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Unit Price ($)</label>
-          <input name="price" value={form.price} onChange={handleChange} placeholder="0.00" autoComplete="off" required type="number" step="0.01" />
+          <label htmlFor="product-price" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Unit Price ($)</label>
+          <input id="product-price" name="price" value={form.price} onChange={handleChange} placeholder="0.00" autoComplete="off" required type="number" step="0.01" />
         </div>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty</label>
-          <input name="quantity" value={form.quantity} onChange={handleChange} placeholder="0" autoComplete="off" type="number" />
+          <label htmlFor="product-quantity" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty</label>
+          <input id="product-quantity" name="quantity" value={form.quantity} onChange={handleChange} placeholder="0" autoComplete="off" type="number" />
         </div>
         <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
           <FiPlus size={20} /> Add Product

@@ -105,16 +105,16 @@ function RawMaterialPage() {
       </div>
       <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1.5fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Code</label>
-          <input name="code" value={form.code} onChange={handleChange} placeholder="e.g., RAW001" autoComplete="off" required />
+          <label htmlFor="material-code" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Code</label>
+          <input id="material-code" name="code" value={form.code} onChange={handleChange} placeholder="e.g., RAW001" autoComplete="off" required />
         </div>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Name</label>
-          <input name="name" value={form.name} onChange={handleChange} placeholder="Material name" autoComplete="off" required />
+          <label htmlFor="material-name" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Name</label>
+          <input id="material-name" name="name" value={form.name} onChange={handleChange} placeholder="Material name" autoComplete="off" required />
         </div>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Stock Qty</label>
-          <input name="stockQuantity" value={form.stockQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" />
+          <label htmlFor="material-stock" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Stock Qty</label>
+          <input id="material-stock" name="stockQuantity" value={form.stockQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" />
         </div>
         <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
           <FiPlus size={20} /> Add

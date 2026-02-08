@@ -121,8 +121,8 @@ function AssociationPage() {
       </div>
       <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Product</label>
-          <select name="productId" value={form.productId} onChange={handleChange} required style={{ width: '100%' }}>
+          <label htmlFor="assoc-product" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Product</label>
+          <select id="assoc-product" name="productId" value={form.productId} onChange={handleChange} required style={{ width: '100%' }}>
             <option value="">Select a product...</option>
             {products.map(p => (
               <option key={p.id} value={p.id}>{p.name} ({p.code})</option>
@@ -130,8 +130,8 @@ function AssociationPage() {
           </select>
         </div>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Raw Material</label>
-          <select name="rawMaterialId" value={form.rawMaterialId} onChange={handleChange} required style={{ width: '100%' }}>
+          <label htmlFor="assoc-material" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Raw Material</label>
+          <select id="assoc-material" name="rawMaterialId" value={form.rawMaterialId} onChange={handleChange} required style={{ width: '100%' }}>
             <option value="">Select material...</option>
             {rawMaterials.map(rm => (
               <option key={rm.id} value={rm.id}>{rm.name} ({rm.code}) - Stock: {rm.stockQuantity}</option>
@@ -139,8 +139,8 @@ function AssociationPage() {
           </select>
         </div>
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty Required</label>
-          <input name="requiredQuantity" value={form.requiredQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" />
+          <label htmlFor="assoc-quantity" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty Required</label>
+          <input id="assoc-quantity" name="requiredQuantity" value={form.requiredQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" />
         </div>
         <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
           <FiPlus size={20} /> Link
