@@ -108,6 +108,94 @@ npm install
 npm start
 ```
 
+---
+
+## How to Run Services Locally
+
+Quick setup to run all services on your machine:
+
+### Prerequisites
+- Java 17+
+- Node.js 16+
+- PostgreSQL 14 (running on localhost:5432)
+- Maven 3.9+
+- npm 8+
+
+### Option 1: Quick Start (Recommended)
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+mvn quarkus:dev -DskipTests
+```
+Waits for: `Listening on: http://localhost:8082`
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm install  # Only needed first time
+npm start
+```
+Waits for: `Compiled successfully!`
+
+**Then access:**
+- **Application**: http://localhost:3001
+- **API**: http://localhost:8082/api
+- **Database**: localhost:5432 (postgres/postgres)
+
+### Option 2: Using Docker Compose
+
+```bash
+docker compose up
+```
+
+This starts all services automatically (more info in Deployment Options section above).
+
+### Verify Services Are Running
+
+**Windows:**
+```powershell
+netstat -an | Select-String "8082|3001|5432"
+```
+
+**Mac/Linux:**
+```bash
+lsof -i :8082 && lsof -i :3001 && psql -V
+```
+
+### Expected Output
+
+✅ Backend: `... started in X.XXXs. Listening on: http://localhost:8082`
+✅ Frontend: `Compiled successfully!`
+✅ Database: PostgreSQL ready on port 5432
+
+### Troubleshooting
+
+**Backend won't start (port 8082 in use):**
+```bash
+# Windows
+Get-Process | Where-Object {$_.ProcessName -like "*java*"} | Stop-Process -Force
+
+# Mac/Linux
+kill $(lsof -t -i :8082)
+```
+
+**Frontend won't start (port 3001 in use):**
+```bash
+# Windows
+Get-Process | Where-Object {$_.ProcessName -like "*node*"} | Stop-Process -Force
+
+# Mac/Linux  
+kill $(lsof -t -i :3001)
+```
+
+**Database connection error:**
+- Verify PostgreSQL is running: `psql -U postgres -c "SELECT version();"`
+- Check credentials in `backend/src/main/resources/application.properties`
+- Default: user=postgres, password=postgres, database=controle_estoque
+
+---
+
 ## Testing
 
 ### Unit & Integration Tests
@@ -509,3 +597,11 @@ For detailed technical information, refer to:
 **Status:** Production Ready | Fully Tested | Well Documented
 
 *Last Updated: February 2026*
+
+---
+
+## About the Developer
+
+🔗 **Portfolio**: https://browndark.github.io/
+
+Visit my portfolio to see more projects and learn about my experience with full-stack development, DevOps, and software engineering best practices.
