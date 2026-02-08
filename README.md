@@ -108,12 +108,6 @@ npm install
 npm start
 ```
 
-**Database:**
-
-*Note: Database is automatically created and initialized by Docker Compose with the name `estoque`*
-
----
-
 ## Testing
 
 ### Unit & Integration Tests
@@ -183,7 +177,6 @@ robot tests/robot/
 ├── docs/                            # Comprehensive documentation
 │   ├── ARCHITECTURE.md              # System design
 │   ├── DATABASE_SCHEMA.md           # ER diagrams & migrations
-│   ├── API_DOCUMENTATION.md         # REST endpoint specs
 │   ├── ALGORITHM_EXPLANATION.md     # Greedy algorithm details
 │   ├── TESTS_CI_CD_SUITE.md         # Testing documentation
 │   └── [7+ more files]
@@ -227,6 +220,46 @@ robot tests/robot/
 
 **Time Complexity:** O(n log n) - sorting products
 **Space Complexity:** O(n) - for calculation buffers
+
+### Example: Algorithm Input & Output
+
+**Input State:**
+
+Products Available:
+- Product A: Price $100 (highest value)
+- Product B: Price $50
+- Product C: Price $30
+
+Raw Materials in Stock:
+- Steel: 500 units
+- Rubber: 300 units
+- Plastic: 200 units
+
+Product Requirements:
+- Product A needs: 10 Steel + 5 Rubber → Can make 50 units
+- Product B needs: 8 Steel + 10 Rubber → Can make 30 units  
+- Product C needs: 5 Steel + 2 Plastic → Can make 40 units
+
+**Algorithm Execution:**
+
+1. Sort by price DESC: [A ($100), B ($50), C ($30)]
+2. Process Product A: Make 50 units → Value: $5,000 | Consume: 500 Steel, 250 Rubber
+3. Process Product B: Can't make (need 10 Rubber, have 50 left) → 5 units → Value: $250 | Consume: 40 Steel, 50 Rubber
+4. Process Product C: Can't make (need 5 Steel, have 0 left)
+
+**Output:**
+
+```json
+{
+  "products": [
+    {"product": "A", "quantity": 50, "unitPrice": 100},
+    {"product": "B", "quantity": 5, "unitPrice": 50}
+  ],
+  "totalValue": 5250
+}
+```
+
+Result: **Prioritized high-value Product A (50 units @ $100)** over cheaper alternatives, maximizing total production value.
 
 [→ Full algorithm explanation](docs/ALGORITHM_EXPLANATION.md)
 
@@ -305,8 +338,6 @@ Response: 200 OK
   "totalValue": 999.90
 }
 ```
-
-[→ Full API docs](docs/API_DOCUMENTATION.md)
 
 ---
 
@@ -395,7 +426,6 @@ Complete documentation available in `/docs`:
 
 - [Architecture](docs/ARCHITECTURE.md) - System design & components
 - [Database Schema](docs/DATABASE_SCHEMA.md) - ER diagrams & migrations
-- [API Documentation](docs/API_DOCUMENTATION.md) - All endpoints
 - [Algorithm Explanation](docs/ALGORITHM_EXPLANATION.md) - Production logic
 - [Deployment Guide](docs/DEPLOYMENT.md) - Production setup
 - [CI/CD Guide](.github/workflows/README.md) - Pipeline documentation
@@ -461,7 +491,7 @@ This project is provided as a test/evaluation deliverable.
 
 ## Next Steps
 
-1. **Clone the repo**: `git clone <repo-url>`
+1. **Clone the repo**: `git clone <https://github.com/browndark/Teste-Pr-tico---Autoflex.git>`
 2. **Run with Docker**: `docker compose up`
 3. **Explore the app**: Open http://localhost:3001
 4. **Read the docs**: Start with [ARCHITECTURE.md](docs/ARCHITECTURE.md)
@@ -472,7 +502,7 @@ This project is provided as a test/evaluation deliverable.
 For detailed technical information, refer to:
 - [QUICK_START.md](docs/QUICK_START.md) - Developer quickstart
 - [ARCHITECTURE.md](docs/ARCHITECTURE.md) - System design  
-- [Troubleshooting Guide](docs/TROUBLESHOOTING.md) - Common issues & solutions
+- [DATABASE_SCHEMA.md](docs/DATABASE_SCHEMA.md) - Entity relationships & migrations
 
 ---
 
