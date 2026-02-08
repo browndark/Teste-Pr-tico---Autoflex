@@ -2,7 +2,7 @@
 
 A modern React-based web application for real-time inventory management. Manage products, raw materials, and production suggestions with an intuitive and responsive user interface.
 
-## 🎯 Overview
+## Overview
 
 This is the frontend component of the Inventory Management System (Autoflex Project), a full-stack application designed for managing product inventory and raw materials efficiently. The frontend communicates with a Quarkus backend API to provide a seamless user experience.
 
@@ -12,7 +12,7 @@ This is the frontend component of the Inventory Management System (Autoflex Proj
 
 ---
 
-## ✨ Features
+## Features
 
 - **Product Management**
   - View, create, update, and delete products
@@ -46,7 +46,7 @@ This is the frontend component of the Inventory Management System (Autoflex Proj
 
 ---
 
-## 🛠 Technology Stack
+## Technology Stack
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
@@ -61,7 +61,7 @@ This is the frontend component of the Inventory Management System (Autoflex Proj
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have:
 - **Node.js** 14.x or higher
@@ -71,7 +71,7 @@ Before you begin, ensure you have:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Installation
 
@@ -130,7 +130,7 @@ npm run eject
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 frontend/
@@ -189,7 +189,7 @@ frontend/
 
 ---
 
-## 🔌 API Integration
+## API Integration
 
 ### Backend Connection
 
@@ -231,7 +231,7 @@ const newProduct = await apiClient.post('/products', {
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Unit Tests
 ```bash
@@ -256,7 +256,7 @@ npx cypress run --spec "cypress/e2e/main_flow.cy.js"
 
 ---
 
-## 🏗 Building and Deployment
+## Building and Deployment
 
 ### Production Build
 
@@ -294,7 +294,7 @@ docker-compose up frontend
 
 ---
 
-## 📝 Redux State Management
+## Redux State Management
 
 ### Store Structure
 
@@ -339,7 +339,7 @@ dispatch({
 
 ---
 
-## 🎨 Styling and Theming
+## Styling and Theming
 
 - **Main Stylesheet:** `src/App.css`
 - **Global Styles:** `src/index.css`
@@ -348,7 +348,7 @@ dispatch({
 
 ---
 
-## 🐛 Common Issues and Troubleshooting
+## Common Issues and Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -360,7 +360,7 @@ dispatch({
 
 ---
 
-## 📊 Performance Optimization
+## Performance Optimization
 
 - **Code Splitting:** Dynamic component imports
 - **Lazy Loading:** Images and routes loaded on demand
@@ -375,7 +375,7 @@ dispatch({
 
 ---
 
-## 🔐 Security Features
+## Security Features
 
 - ✅ XSS protection (React escaping)
 - ✅ CSRF tokens in API requests
@@ -386,7 +386,7 @@ dispatch({
 
 ---
 
-## 📚 Available Scripts
+## Available Scripts
 
 | Command | Description |
 |---------|-------------|
@@ -399,7 +399,7 @@ dispatch({
 
 ---
 
-## 🚀 Development Workflow
+## Development Workflow
 
 1. **Start Backend:** `mvn quarkus:dev -DskipTests` (from backend folder)
 2. **Start Frontend:** `npm start` (from frontend folder)
@@ -410,7 +410,7 @@ dispatch({
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 ### Core Dependencies
 - `react`: UI library
@@ -426,7 +426,7 @@ dispatch({
 
 ---
 
-## 📄 Environment Variables
+## Environment Variables
 
 Create `.env` file in root (optional):
 
@@ -437,7 +437,7 @@ REACT_APP_DEBUG=false
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Create feature branch: `git checkout -b feature/my-feature`
 2. Commit changes: `git commit -m "feat: add new feature"`
@@ -446,7 +446,7 @@ REACT_APP_DEBUG=false
 
 ---
 
-## 📞 Support and Documentation
+## Support and Documentation
 
 - **Backend API Docs:** [Backend README](../backend/README.md)
 - **Architecture Guide:** [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md)
@@ -455,13 +455,13 @@ REACT_APP_DEBUG=false
 
 ---
 
-## 📄 License
+## License
 
 This project is part of the Autoflex practical test for full-stack development evaluation.
 
 ---
 
-## 🎯 Project Metrics
+## Project Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -476,4 +476,4 @@ This project is part of the Autoflex practical test for full-stack development e
 
 **Last Updated:** February 2026  
 **Frontend Version:** 1.0  
-**Status:** ✅ Production Ready 
+**Status:** [READY] Production Ready 
