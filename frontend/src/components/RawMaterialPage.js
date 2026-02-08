@@ -88,22 +88,40 @@ function RawMaterialPage() {
 
   return (
     <section>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-        <h2 style={{ margin: 0 }}>Raw Materials</h2>
-        <span style={{ background: '#ee7752', color: 'white', padding: '0.4rem 0.8rem', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 700 }}>
-          {rawMaterials.length}
-        </span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <h2 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          ⚙️ Raw Materials
+        </h2>
+        <div style={{ 
+          background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+          color: 'white', 
+          padding: '0.65rem 1.25rem', 
+          borderRadius: '12px', 
+          fontSize: '0.9rem', 
+          fontWeight: 700
+        }}>
+          {rawMaterials.length} items
+        </div>
       </div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '1.5rem' }}>
-        <input name="code" value={form.code} onChange={handleChange} placeholder="Code" autoComplete="off" required />
-        <input name="name" value={form.name} onChange={handleChange} placeholder="Name" autoComplete="off" required />
-        <input name="stockQuantity" value={form.stockQuantity} onChange={handleChange} placeholder="Stock Quantity" autoComplete="off" required type="number" />
-        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <FiPlus size={18} /> Add
+      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1.5fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Code</label>
+          <input name="code" value={form.code} onChange={handleChange} placeholder="e.g., RAW001" autoComplete="off" required />
+        </div>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Name</label>
+          <input name="name" value={form.name} onChange={handleChange} placeholder="Material name" autoComplete="off" required />
+        </div>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Stock Qty</label>
+          <input name="stockQuantity" value={form.stockQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" />
+        </div>
+        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
+          <FiPlus size={20} /> Add
         </button>
       </form>
-      <div style={{ marginBottom: '1rem', position: 'relative' }}>
-        <FiSearch style={{ position: 'absolute', left: '0.75rem', top: '0.75rem', color: '#8b5cf6' }} />
+      <div style={{ marginBottom: '1.5rem', position: 'relative' }}>
+        <FiSearch style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#a78bfa', size: 20 }} />
         <input
           id="searchMaterials"
           name="searchMaterials"
@@ -114,32 +132,77 @@ function RawMaterialPage() {
           autoComplete="off"
           style={{
             width: '100%',
-            padding: '0.75rem 0.75rem 0.75rem 2.5rem',
-            border: '1px solid rgba(139, 92, 246, 0.3)',
-            borderRadius: '6px',
+            padding: '1rem 1rem 1rem 2.75rem',
+            border: '2px solid rgba(139, 92, 246, 0.3)',
+            borderRadius: '10px',
             background: 'rgba(139, 92, 246, 0.05)',
             color: '#d1d5db',
-            fontSize: '0.95rem'
+            fontSize: '0.95rem',
+            transition: 'all 0.3s ease',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+          }}
+          onFocus={(e) => {
+            e.target.style.borderColor = 'rgba(139, 92, 246, 0.6)';
+            e.target.style.boxShadow = '0 6px 20px rgba(139, 92, 246, 0.15)';
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+            e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
           }}
         />
       </div>
       <ul>
-        {filteredMaterials.length > 0 ? filteredMaterials.map(rm => (
-          <li key={rm.id}>
-            <div>
-              <strong>{rm.name} ({rm.code})</strong>
-              <span>Stock: {rm.stockQuantity} units</span>
+        {filteredMaterials.length > 0 ? filteredMaterials.map((rm, idx) => (
+          <li key={rm.id} style={{ position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+              <div style={{
+                background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+                width: '50px',
+                height: '50px',
+                borderRadius: '10px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.5rem',
+                fontWeight: 800,
+                color: 'white',
+                flexShrink: 0
+              }}>
+                {(idx + 1).toString().padStart(2, '0')}
+              </div>
+              <div style={{ flex: 1 }}>
+                <strong style={{ fontSize: '1.15rem', color: '#f0fdf4', display: 'block', marginBottom: '0.3rem' }}>{rm.name}</strong>
+                <span style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>Code: <strong>{rm.code}</strong></span>
+              </div>
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(8, 145, 178, 0.08) 100%)',
+                border: '2px solid rgba(6, 182, 212, 0.3)',
+                borderRadius: '10px',
+                padding: '0.75rem 1.25rem',
+                minWidth: '140px',
+                textAlign: 'center'
+              }}>
+                <p style={{ fontSize: '0.8rem', color: '#67e8f9', margin: '0 0 0.3rem 0', fontWeight: 600 }}>Stock</p>
+                <p style={{ fontSize: '1.35rem', color: '#06b6d4', fontWeight: 900, margin: 0 }}>
+                  {rm.stockQuantity}
+                </p>
+              </div>
             </div>
             <div className="item-actions">
               <button className="btn-delete" onClick={() => handleDelete(rm.id, rm.name)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <FiTrash2 size={16} /> Delete
+                <FiTrash2 size={18} /> Delete
               </button>
             </div>
           </li>
         )) : (
-          <p style={{ textAlign: 'center', color: '#d1d5db', marginTop: '2rem' }}>
-            {searchTerm ? 'No raw materials found' : 'No raw materials registered'}
-          </p>
+          <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+            <p style={{ color: '#f3f4f6', fontSize: '1.1rem', fontWeight: 600, margin: '0 0 0.5rem 0' }}>
+              {searchTerm ? '🔍 No materials found' : '📭 No materials registered'}
+            </p>
+            <p style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>
+              {searchTerm ? 'Try adjusting your search terms' : 'Click "Add" to create your first raw material'}
+            </p>
+          </div>
         )}
       </ul>
     </section>

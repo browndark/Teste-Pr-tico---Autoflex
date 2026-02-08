@@ -89,23 +89,44 @@ function ProductPage() {
 
   return (
     <section>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-        <h2 style={{ margin: 0 }}>Products</h2>
-        <span style={{ background: '#ee7752', color: 'white', padding: '0.4rem 0.8rem', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 700 }}>
-          {products.length}
-        </span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <h2 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          📦 Products
+        </h2>
+        <div style={{ 
+          background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+          color: 'white', 
+          padding: '0.65rem 1.25rem', 
+          borderRadius: '12px', 
+          fontSize: '0.9rem', 
+          fontWeight: 700
+        }}>
+          {products.length} items
+        </div>
       </div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '1.5rem' }}>
-        <input name="code" value={form.code} onChange={handleChange} placeholder="Code" autoComplete="off" required />
-        <input name="name" value={form.name} onChange={handleChange} placeholder="Name" autoComplete="off" required />
-        <input name="price" value={form.price} onChange={handleChange} placeholder="Price" autoComplete="off" required type="number" step="0.01" />
-        <input name="quantity" value={form.quantity} onChange={handleChange} placeholder="Quantity" autoComplete="off" type="number" />
-        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <FiPlus size={18} /> Add
+      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Code</label>
+          <input name="code" value={form.code} onChange={handleChange} placeholder="e.g., PRD001" autoComplete="off" required />
+        </div>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Name</label>
+          <input name="name" value={form.name} onChange={handleChange} placeholder="Product name" autoComplete="off" required />
+        </div>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Unit Price ($)</label>
+          <input name="price" value={form.price} onChange={handleChange} placeholder="0.00" autoComplete="off" required type="number" step="0.01" />
+        </div>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty</label>
+          <input name="quantity" value={form.quantity} onChange={handleChange} placeholder="0" autoComplete="off" type="number" />
+        </div>
+        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
+          <FiPlus size={20} /> Add Product
         </button>
       </form>
-      <div style={{ marginBottom: '1rem', position: 'relative' }}>
-        <FiSearch style={{ position: 'absolute', left: '0.75rem', top: '0.75rem', color: '#8b5cf6' }} />
+      <div style={{ marginBottom: '1.5rem', position: 'relative' }}>
+        <FiSearch style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#a78bfa', size: 20 }} />
         <input
           id="searchProducts"
           name="searchProducts"
@@ -116,38 +137,80 @@ function ProductPage() {
           autoComplete="off"
           style={{
             width: '100%',
-            padding: '0.75rem 0.75rem 0.75rem 2.5rem',
-            border: '1px solid rgba(139, 92, 246, 0.3)',
-            borderRadius: '6px',
+            padding: '1rem 1rem 1rem 2.75rem',
+            border: '2px solid rgba(139, 92, 246, 0.3)',
+            borderRadius: '10px',
             background: 'rgba(139, 92, 246, 0.05)',
             color: '#d1d5db',
-            fontSize: '0.95rem'
+            fontSize: '0.95rem',
+            transition: 'all 0.3s ease',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+          }}
+          onFocus={(e) => {
+            e.target.style.borderColor = 'rgba(139, 92, 246, 0.6)';
+            e.target.style.boxShadow = '0 6px 20px rgba(139, 92, 246, 0.15)';
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+            e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
           }}
         />
       </div>
       <ul>
-        {filteredProducts.length > 0 ? filteredProducts.map(p => {
+        {filteredProducts.length > 0 ? filteredProducts.map((p, idx) => {
           const totalPrice = (parseFloat(p.price) * (p.quantity || 1)).toFixed(2);
           return (
-            <li key={p.id}>
-              <div>
-                <strong>{p.name} ({p.code})</strong>
-                <span>Unit Price: $ {parseFloat(p.price).toFixed(2)}{p.quantity && ` • Quantity: ${p.quantity}`}</span>
-                <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(10, 150, 100, 0.1) 100%)', borderRadius: '4px', color: '#10b981', fontWeight: 700, fontSize: '1rem', borderLeft: '3px solid #10b981' }}>
-                  Total Price: $ {totalPrice}
+            <li key={p.id} style={{ position: 'relative' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+                <div style={{
+                  background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
+                  fontWeight: 800,
+                  color: 'white',
+                  flexShrink: 0
+                }}>
+                  {(idx + 1).toString().padStart(2, '0')}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <strong style={{ fontSize: '1.15rem', color: '#f0fdf4', display: 'block', marginBottom: '0.3rem' }}>{p.name}</strong>
+                  <span style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>Code: <strong>{p.code}</strong> • Unit: <strong>${parseFloat(p.price).toFixed(2)}</strong> {p.quantity && `• Qty: ${p.quantity} units`}</span>
+                </div>
+                <div style={{
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(29, 78, 216, 0.08) 100%)',
+                  border: '2px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '10px',
+                  padding: '0.75rem 1.25rem',
+                  minWidth: '140px',
+                  textAlign: 'center'
+                }}>
+                  <p style={{ fontSize: '0.8rem', color: '#93c5fd', margin: '0 0 0.3rem 0', fontWeight: 600 }}>Total</p>
+                  <p style={{ fontSize: '1.35rem', color: '#3b82f6', fontWeight: 900, margin: 0 }}>
+                    $ {totalPrice}
+                  </p>
                 </div>
               </div>
               <div className="item-actions">
                 <button className="btn-delete" onClick={() => handleDelete(p.id, p.name)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <FiTrash2 size={16} /> Delete
+                  <FiTrash2 size={18} /> Delete
                 </button>
               </div>
             </li>
           );
         }) : (
-          <p style={{ textAlign: 'center', color: '#d1d5db', marginTop: '2rem' }}>
-            {searchTerm ? 'No products found' : 'No products registered'}
-          </p>
+          <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+            <p style={{ color: '#f3f4f6', fontSize: '1.1rem', fontWeight: 600, margin: '0 0 0.5rem 0' }}>
+              {searchTerm ? '🔍 No products found' : '📭 No products registered'}
+            </p>
+            <p style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>
+              {searchTerm ? 'Try adjusting your search terms' : 'Click "Add Product" to create your first product'}
+            </p>
+          </div>
         )}
       </ul>
     </section>

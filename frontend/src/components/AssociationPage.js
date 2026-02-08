@@ -104,56 +104,122 @@ function AssociationPage() {
 
   return (
     <section>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-        <h2 style={{ margin: 0 }}>Product/Raw Material Association</h2>
-        <span style={{ background: '#ee7752', color: 'white', padding: '0.4rem 0.8rem', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 700 }}>
-          {associations.length}
-        </span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <h2 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          🔗 Product/Material Association
+        </h2>
+        <div style={{ 
+          background: 'linear-gradient(135deg, #ec4899, #be185d)',
+          color: 'white', 
+          padding: '0.65rem 1.25rem', 
+          borderRadius: '12px', 
+          fontSize: '0.9rem', 
+          fontWeight: 700
+        }}>
+          {associations.length} links
+        </div>
       </div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '1.5rem' }}>
-        <select name="productId" value={form.productId} onChange={handleChange} required>
-          <option value="">Select Product</option>
-          {products.map(p => (
-            <option key={p.id} value={p.id}>{p.name}</option>
-          ))}
-        </select>
-        <select name="rawMaterialId" value={form.rawMaterialId} onChange={handleChange} required>
-          <option value="">Select Raw Material</option>
-          {rawMaterials.map(rm => (
-            <option key={rm.id} value={rm.id}>{rm.name}</option>
-          ))}
-        </select>
-        <input name="requiredQuantity" value={form.requiredQuantity} onChange={handleChange} placeholder="Required Quantity" autoComplete="off" required type="number" />
-        {stockWarning && (
-          <div style={{ padding: '0.75rem', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', borderRadius: '6px', color: '#ef4444', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-            {stockWarning}
-          </div>
-        )}
-        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <FiPlus size={18} /> Associate
+      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Product</label>
+          <select name="productId" value={form.productId} onChange={handleChange} required style={{ width: '100%' }}>
+            <option value="">Select a product...</option>
+            {products.map(p => (
+              <option key={p.id} value={p.id}>{p.name} ({p.code})</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Raw Material</label>
+          <select name="rawMaterialId" value={form.rawMaterialId} onChange={handleChange} required style={{ width: '100%' }}>
+            <option value="">Select material...</option>
+            {rawMaterials.map(rm => (
+              <option key={rm.id} value={rm.id}>{rm.name} ({rm.code}) - Stock: {rm.stockQuantity}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#a78bfa', marginBottom: '0.5rem' }}>Qty Required</label>
+          <input name="requiredQuantity" value={form.requiredQuantity} onChange={handleChange} placeholder="0" autoComplete="off" required type="number" />
+        </div>
+        <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
+          <FiPlus size={20} /> Link
         </button>
       </form>
+      {stockWarning && (
+        <div style={{ 
+          padding: '1rem 1.25rem', 
+          background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.08))',
+          border: '2px solid rgba(239, 68, 68, 0.4)',
+          borderRadius: '10px', 
+          color: '#fca5a5', 
+          fontSize: '0.95rem', 
+          fontWeight: 700,
+          marginBottom: '1.5rem',
+          boxShadow: '0 4px 12px rgba(239, 68, 68, 0.1)'
+        }}>
+          ⚠️ {stockWarning}
+        </div>
+      )}
       <ul>
-        {associations.length > 0 ? associations.map(a => {
+        {associations.length > 0 ? associations.map((a, idx) => {
           const totalPrice = (parseFloat(a.product.price) * a.requiredQuantity).toFixed(2);
           return (
-            <li key={a.id}>
-              <div>
-                <strong>{a.product.name}</strong>
-                <span>Raw Material: {a.rawMaterial.name} • Quantity: {a.requiredQuantity} units • Unit Price: $ {parseFloat(a.product.price).toFixed(2)}</span>
-                <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(10, 150, 100, 0.1) 100%)', borderRadius: '4px', color: '#10b981', fontWeight: 700, fontSize: '1rem', borderLeft: '3px solid #10b981' }}>
-                  Total Price: $ {totalPrice}
+            <li key={a.id} style={{ position: 'relative' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+                <div style={{
+                  background: 'linear-gradient(135deg, #ec4899, #be185d)',
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
+                  fontWeight: 800,
+                  color: 'white',
+                  flexShrink: 0
+                }}>
+                  {(idx + 1).toString().padStart(2, '0')}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <strong style={{ fontSize: '1.15rem', color: '#f0fdf4', display: 'block', marginBottom: '0.3rem' }}>
+                    {a.product.name} <span style={{ color: '#fca5a5', fontSize: '0.85rem' }}>→</span> {a.rawMaterial.name}
+                  </strong>
+                  <span style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>
+                    Qty: <strong>{a.requiredQuantity} units</strong> • Price/Unit: <strong>${parseFloat(a.product.price).toFixed(2)}</strong>
+                  </span>
+                </div>
+                <div style={{
+                  background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(190, 24, 93, 0.08) 100%)',
+                  border: '2px solid rgba(236, 72, 153, 0.3)',
+                  borderRadius: '10px',
+                  padding: '0.75rem 1.25rem',
+                  minWidth: '140px',
+                  textAlign: 'center'
+                }}>
+                  <p style={{ fontSize: '0.8rem', color: '#f472b6', margin: '0 0 0.3rem 0', fontWeight: 600 }}>Total Cost</p>
+                  <p style={{ fontSize: '1.35rem', color: '#ec4899', fontWeight: 900, margin: 0 }}>
+                    $ {totalPrice}
+                  </p>
                 </div>
               </div>
               <div className="item-actions">
                 <button className="btn-delete" onClick={() => handleDelete(a.id, a.product.name, a.rawMaterial.name)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <FiTrash2 size={16} /> Delete
+                  <FiTrash2 size={18} /> Remove
                 </button>
               </div>
             </li>
           );
         }) : (
-          <p style={{ textAlign: 'center', color: '#d1d5db', marginTop: '2rem' }}>No associations registered</p>
+          <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+            <p style={{ color: '#f3f4f6', fontSize: '1.1rem', fontWeight: 600, margin: '0 0 0.5rem 0' }}>
+              📭 No associations registered
+            </p>
+            <p style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>
+              Create links between products and their required raw materials
+            </p>
+          </div>
         )}
       </ul>
     </section>
