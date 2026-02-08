@@ -229,10 +229,6 @@ git commit -m "chore: Remove node_modules from Git"
 
 ---
 
-## 📞 What's Next (Optional)
-
-If you want to go even further (not required but impactful):
-
 1. **Clean Git history completely**
    - Use `git filter-repo` to remove node_modules from all commits
    - Requires force-push (or fresh clone)
