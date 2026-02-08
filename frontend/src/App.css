@@ -55,6 +55,41 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 :root {
   --primary-black: #0a0e27;
   --secondary-black: #141b2f;
@@ -514,6 +549,130 @@ span[style*="background: #ee7752"] {
   color: #cbd5e1;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* Product Page Cards */
+.product-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(3, 102, 214, 0.04) 100%);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 12px 36px rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Raw Material Page Cards */
+.raw-material-card {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(8, 145, 178, 0.04) 100%);
+  border: 2px solid rgba(6, 182, 212, 0.3);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.1);
+  transition: all 0.3s ease;
+}
+
+.raw-material-card:hover {
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Association Page Cards */
+.association-card {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(190, 24, 93, 0.04) 100%);
+  border: 2px solid rgba(236, 72, 153, 0.3);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.1);
+  transition: all 0.3s ease;
+}
+
+.association-card:hover {
+  border-color: rgba(236, 72, 153, 0.5);
+  box-shadow: 0 12px 36px rgba(236, 72, 153, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.status-badge.success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.status-badge.warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.status-badge.info {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.status-badge.danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.status-badge.cyan {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+}
+
+.status-badge.pink {
+  background: linear-gradient(135deg, #ec4899, #be185d);
+  color: white;
+}
+
+/* Numbered Indicators */
+.number-indicator {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+  animation: slideInUp 0.4s ease-out;
+}
+
+.number-indicator.blue {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.number-indicator.cyan {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.number-indicator.purple {
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+}
+
+.number-indicator.pink {
+  background: linear-gradient(135deg, #ec4899, #be185d);
+}
+
+.number-indicator.green {
+  background: linear-gradient(135deg, #10b981, #059669);
 }
 
 /* Responsive Design */
